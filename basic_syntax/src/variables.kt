@@ -20,6 +20,12 @@ fun maxOf(a: Int, b: Int): Int {
 // using if as an expression
 fun maxOfEx(a: Int, b: Int) = if (a > b) a else b
 
+/* using nullable values and checking for null
+* a reference must be explicitly marked as nullable when null value is possible
+*
+*
+* */
+
 fun main(args: Array<String>) {
     // read-only local variables are defined using the keyword 'val'
     val oldA: Int = 1 // immediate assignment
@@ -30,6 +36,10 @@ fun main(args: Array<String>) {
     // variables that can be reassigned use the 'var' keyword
     var x = 5 // 'Int' type is inferred
     x += 1
+
+    /* val (from value) - immutable reference, corresponds to final variable in java
+    *  var (from variable) - mutable reference,corresponds to a regular non-final java variable
+     */
 
     println("The value of oldA is $oldA")
     println("The value of b is $b")
