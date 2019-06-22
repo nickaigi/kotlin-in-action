@@ -20,12 +20,6 @@ fun maxOf(a: Int, b: Int): Int {
 // using if as an expression
 fun maxOfEx(a: Int, b: Int) = if (a > b) a else b
 
-/* using nullable values and checking for null
-* a reference must be explicitly marked as nullable when null value is possible
-*
-*
-* */
-
 fun main(args: Array<String>) {
     // read-only local variables are defined using the keyword 'val'
     val oldA: Int = 1 // immediate assignment
