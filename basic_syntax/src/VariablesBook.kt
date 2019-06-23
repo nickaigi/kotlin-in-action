@@ -24,4 +24,18 @@ fun main(args: Array<String>) {
 
     val name = if (args.size > 0) args[0] else "Kotlin"
     println("Hello $name!")
+
+    /* string templates: Kotlin allows you to refer to local variables in
+     * string literals by putting the $ character in front of the variable name
+     *
+     * use ${} for complex expressions as well
+     */
+    if (args.size > 0) {
+        println("Hellow again ${args[0]}!")
+    }
+
+    /* you can nest double quotes within double quotes, as long as they are
+     * within an expression
+     */
+    println("Hello, ${if (args.size > 0) args[0] else "someone"}!")
 }
