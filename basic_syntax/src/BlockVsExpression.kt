@@ -2,7 +2,7 @@
 * expression body functions
  */
 
-fun maxBlock(a:Int, b:Int): Int {
+fun maxBlock(a: Int, b: Int): Int {
     return if (a > b) a else b
     /* if is an expression, not a statement
     * expression: has a value, which can be used as part of another expression
@@ -18,12 +18,12 @@ fun maxBlock(a:Int, b:Int): Int {
      */
 }
 
-fun maxExpression(a:Int, b:Int): Int = if (a > b) a else b
+fun maxExpression(a: Int, b: Int): Int = if (a > b) a else b
 
 /* the max function can be simplified by omitting its return type
  */
 
-fun max(a:Int, b:Int) = if (a > b) a else b
+fun max(a: Int, b: Int) = if (a > b) a else b
 
 /* Note: omitting the return type is allowed only for functions with an
  * expression body.
