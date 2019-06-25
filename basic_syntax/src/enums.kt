@@ -25,6 +25,23 @@ enum class Color(
     fun rgb() = (r * 256 + g) * 256 + b
 }
 
+/* using 'when' to deal with enum classes
+* like 'if', 'when' is an expression that returns a value, so you can write a
+* function with an expression body, returning the 'when' expressoin directly
+* */
+
+fun getMnemonic(color: Color) =
+        when (color) {
+            Color.RED -> "Richard"
+            Color.ORANGE -> "Of"
+            Color.YELLOW -> "York"
+            Color.GREEN -> "Gave"
+            Color.BLUE -> "Battle"
+            Color.INDIGO -> "In"
+            Color.VIOLET -> "Vain"
+        }
+
 fun main(args: Array<String>) {
     println(Color.BLUE.rgb())
+    println(getMnemonic(Color.BLUE))
 }
