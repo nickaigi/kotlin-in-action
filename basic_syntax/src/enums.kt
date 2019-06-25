@@ -41,7 +41,19 @@ fun getMnemonic(color: Color) =
             Color.VIOLET -> "Vain"
         }
 
+/* notice that we don't have 'break' statement like in Java
+* you can combine multiple values in the same branch if you separate them witj
+* commas
+* */
+
+fun getWarmth(color: Color) = when(color) {
+    Color.RED, Color.ORANGE, Color.YELLOW -> "Warm"
+    Color.GREEN -> "Neutral"
+    Color.BLUE, Color.INDIGO, Color.VIOLET -> "Cold"
+}
+
 fun main(args: Array<String>) {
     println(Color.BLUE.rgb())
     println(getMnemonic(Color.BLUE))
+    println(getWarmth(Color.ORANGE))
 }
