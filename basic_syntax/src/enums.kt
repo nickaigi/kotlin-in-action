@@ -74,6 +74,10 @@ fun mix(c1: Color, c2: Color) =
             else -> throw Exception("Dirty color")
         }
 
+/*
+* if no argument is supplied for the 'when' expression, the branch condition is
+*  any Boolean Expression
+* */
 fun mixOptimized(c1: Color, c2: Color) =
         when {
             (c1 == Color.RED && c2 == Color.YELLOW) || (c1 == Color.YELLOW && c2 == Color.RED) -> Color.ORANGE
