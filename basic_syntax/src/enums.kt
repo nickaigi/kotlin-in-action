@@ -1,3 +1,5 @@
+import java.lang.Exception
+
 /* think of the 'when' construct as a replacement for the 'switch' construct
  * in Java
  */
@@ -52,8 +54,29 @@ fun getWarmth(color: Color) = when(color) {
     Color.BLUE, Color.INDIGO, Color.VIOLET -> "Cold"
 }
 
+/* if you are bored, you can always import enum constants inorder to access them
+ * without a qualifier
+ *
+ * import enums.Color
+ * import enums.Color.*
+ *
+ */
+
+/* 'when' is more powerful than 'switch' in Java since 'when' allows the use of
+ * any object
+ */
+
+fun mix(c1: Color, c2: Color) =
+        when(setOf(c1, c2)) {
+            setOf(Color.RED, Color.YELLOW) -> Color.ORANGE
+            setOf(Color.YELLOW, Color.BLUE) -> Color.GREEN
+            setOf(Color.BLUE, Color.VIOLET) -> Color.INDIGO
+            else -> throw Exception("Dirty color")
+        }
+
 fun main(args: Array<String>) {
     println(Color.BLUE.rgb())
     println(getMnemonic(Color.BLUE))
     println(getWarmth(Color.ORANGE))
+    println(mix(Color.BLUE, Color.YELLOW))
 }
