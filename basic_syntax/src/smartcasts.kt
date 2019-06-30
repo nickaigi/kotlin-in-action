@@ -89,8 +89,29 @@ fun evalWhen(e: Expr): Int =
                 throw IllegalArgumentException("Unknown expression")
         }
 
-/* blocks as branches of 'if'
+/* blocks as branches of 'if' and 'when'
+* 'if' and 'when' can have blocks as branches. the last expression in the block
+* is the result
+*
+* Important: "the last expression in a block is the result"
+* */
+
+fun evalWithLogging(e: Expr): Int =
+        when (e) {
+            is Num -> {
+                println("num: ${e.value}")
+                e.value
+            }
+            is Sum -> {
+                val left = evalWithLogging(e.left)
+                val right = evalWithLogging(e.right)
+                println("sum: $left + $right")
+                left + right
+            }
+            else -> throw IllegalArgumentException("Unknown expression")
+        }
 fun main(args: Array<String>) {
-    println(eval(Sum(Sum(Num(1), Num(2)), Num(4))))
-    println(evalIf(Sum(Num(1), Num(2))))
+    //println(eval(Sum(Sum(Num(1), Num(2)), Num(4))))
+    //println(evalIf(Sum(Num(1), Num(2))))
+    println(evalWithLogging(Sum(Sum(Num(1), Num(2)), Num(4))))
 }
