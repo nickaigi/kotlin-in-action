@@ -1,5 +1,5 @@
 
-/* fizzbuzz: 
+/* fizzbuzz: */
 
 
 fun main(args: Array<String>) {
