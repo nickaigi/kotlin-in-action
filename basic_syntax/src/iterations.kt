@@ -38,4 +38,7 @@ fun main(args: Array<String>) {
     for (i in 100 downTo 1 step 2) {
         print(fizzBuzz(i))
     }
+
+    /* you can use 'until'
+    * for (x in number until size)*/
 }
