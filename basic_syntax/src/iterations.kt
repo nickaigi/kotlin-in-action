@@ -79,6 +79,32 @@ fun exampleFive() {
     }
 }
 
+fun exampleSix(){
+    val list = arrayListOf("10", "11", "1001")
+    for ((index, element) in list.withIndex()) {
+        println("$index: $element")
+    }
+}
+
+fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+fun isNotDigt(c: Char) = c !in '0'..'9'
+
+fun exampleSeven() {
+    println(isLetter('q'))
+    println(isNotDigt('x'))
+}
+
+fun recognize(c: Char): String {
+    var s = when (c) {
+        in '0'..'9' -> "It's a digit!"
+        in 'a'..'z' -> "It's a lowercase letter!"
+        in 'A'..'Z' -> "It's a uppercase letter!"
+        else -> "I don't know ..."
+    }
+    return s
+}
+
+
 fun main(args: Array<String>) {
-    exampleFive()
+   println(recognize('Z'))
 }
