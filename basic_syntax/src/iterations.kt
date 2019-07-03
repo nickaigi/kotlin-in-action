@@ -1,3 +1,4 @@
+import java.util.*
 
 /* fizzbuzz:
 * - if any number is divisible by 3 = Fizz
@@ -61,6 +62,23 @@ fun exampleFour() {
     }
 }
 
+fun exampleFive() {
+    /* iterating over maps */
+    val binaryReps = TreeMap<Char, String>()
+
+    /* the .. syntax for creating ranges works not only for numbers by for
+     * characters as well
+     */
+    for (c in 'A'..'F') {
+        val binary = Integer.toBinaryString(c.toInt())
+        binaryReps[c] = binary
+    }
+
+    for ((letter, binary) in binaryReps) {
+        println("$letter = $binary")
+    }
+}
+
 fun main(args: Array<String>) {
-    exampleFour()
+    exampleFive()
 }
