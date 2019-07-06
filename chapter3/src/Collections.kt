@@ -10,3 +10,15 @@ fun exampleOne() {
     println(list.javaClass)  // java.util.ArrayList
     println(map.javaClass)   // java.util.HashMap
 }
+
+fun exampleTwo() {
+    val strings = listOf("first", "second", "fourteenth")
+    println(strings.last())  // fourteenth
+
+    val numbers = setOf(1, 14, 2)
+    println(numbers.max())  // 14
+}
+
+fun main(args: Array<String>) {
+    // do nothing
+}
