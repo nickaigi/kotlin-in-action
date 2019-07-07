@@ -1,3 +1,5 @@
+import java.lang.StringBuilder
+
 /* we've already seen how to create a new set: 'setOf' function*/
 
 fun exampleOne() {
@@ -19,6 +21,31 @@ fun exampleTwo() {
     println(numbers.max())  // 14
 }
 
+fun exampleThree() {
+    val list = listOf(1, 2, 3)
+    // simple method to print contents of a list
+    println(list) // invokes toString()
+}
+
+// initial implementation of joinToString()
+
+fun <T> joinToString(
+        collection: Collection<T>,
+        separator: String,
+        prefix: String,
+        postfix: String
+): String {
+    val result = StringBuilder(prefix)
+
+    for ((index, element) in collection.withIndex()) {
+        if (index > 0) result.append(separator)
+        result.append(element)
+    }
+
+    result.append(postfix)
+    return result.toString()
+}
+
 fun main(args: Array<String>) {
-    // do nothing
+    exampleThree()
 }
