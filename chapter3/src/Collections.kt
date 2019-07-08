@@ -27,7 +27,10 @@ fun exampleThree() {
     println(list) // invokes toString()
 }
 
-// initial implementation of joinToString()
+/* initial implementation of joinToString()
+* The function is generic: it works on collections that contain elements of
+* any type
+* */
 
 fun <T> joinToString(
         collection: Collection<T>,
@@ -46,6 +49,11 @@ fun <T> joinToString(
     return result.toString()
 }
 
+fun exampleFour() {
+    val list = listOf(1, 2, 3)
+    println(joinToString(list, "; ", "(", ")"))
+}
+
 fun main(args: Array<String>) {
-    exampleThree()
+    exampleFour()
 }
