@@ -56,6 +56,9 @@ fun exampleFour() {
 
 /* using default parameter values
 * Remember: Java doesn't have the concept of default parameters.
+*
+* you have to specify all the parameter values explicitly when you call
+* a Kotlin function with default parameter values from Java
 * */
 
 fun <T> joinToStringB(
@@ -82,6 +85,33 @@ fun exampleFive() {
     println(joinToStringB(list, ";"))  // 1; 2; 3
 }
 
+/* final version of joinToString
+* utility functions as extensions
+* This version is almost exactly what you'll find in the kotlin standard lib
+* */
+
+fun <T> Collection<T>.joinToString(
+        separator: String = ", ",
+        prefix: String = "",
+        postfix: String = ""
+): String {
+    val result = StringBuilder(prefix)
+
+    for((index, element) in this.withIndex()) {
+        if (index > 0) result.append(separator)
+        result.append(element)
+    }
+
+    result.append(postfix)
+    return result.toString()
+
+}
+
+fun exampleSix() {
+    val list = listOf(1, 2, 3)
+    println(list.joinToString(separator = "; ", prefix = "(", postfix = ")"))  // (1; 2; 3)
+}
+
 fun main(args: Array<String>) {
-    exampleFive()
+    exampleSix()
 }
