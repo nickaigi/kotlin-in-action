@@ -109,9 +109,40 @@ fun <T> Collection<T>.joinToString(
 
 fun exampleSix() {
     val list = listOf(1, 2, 3)
+    // note how we make the call to joinToString
     println(list.joinToString(separator = "; ", prefix = "(", postfix = ")"))  // (1; 2; 3)
 }
 
+/* extension functions are just syntactic sugar over static method calls.
+* you can therefore use a specific type as a receiver type, not only a class
+*
+* Example: a 'join' function that can be invoked only on collections of strings
+* Calling this function with a list of objects of another type won't work*/
+
+fun Collection<String>.join(
+        separator: String = ", ",
+        prefix: String = "",
+        postfix: String = ""
+) = joinToString(separator, prefix, postfix)
+
+
+fun exampleSeven() {
+    println(listOf("one", "two", "eight").join(" ")) // one two eight
+}
+
+/* static nature of extensions also means that extension functions can't be
+ * overridden in subclasses
+ * */
+
+/* Declaring a mutable extension property*/
+
+
+var StringBuilder.lastChar: Char
+    get () = get(length -1)  // property getter
+    set(value: Char) {  // property setter
+        this.setCharAt(length -1, value)
+    }
+
 fun main(args: Array<String>) {
-    exampleSix()
+    println("Kotlin".lastChar)
 }
