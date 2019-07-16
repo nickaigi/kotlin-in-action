@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
     println("The value of b is $b")
     println("The value of c is $c")
     println("The value of x is $x")
-    println("The value of topX is $topX")
+    println("The value of getTopX is $topX")
     incrementX()
     println("After increment: $topX")
 

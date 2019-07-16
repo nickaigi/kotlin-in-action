@@ -136,6 +136,8 @@ fun exampleSeven() {
 
 /* Declaring a mutable extension property*/
 
+val String.lastChar: Char
+    get() = get(length - 1)
 
 var StringBuilder.lastChar: Char
     get () = get(length -1)  // property getter
@@ -145,4 +147,8 @@ var StringBuilder.lastChar: Char
 
 fun main(args: Array<String>) {
     println("Kotlin".lastChar)
+
+    val sb = StringBuilder("Kotlin")
+    sb.lastChar = '!'
+    println(sb)
 }
