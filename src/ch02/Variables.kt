@@ -1,3 +1,5 @@
+package ch02
+
 /* defining variables in kotlin */
 
 // top-level variables

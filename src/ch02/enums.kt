@@ -1,3 +1,5 @@
+package ch02
+
 import java.lang.Exception
 
 /* think of the 'when' construct as a replacement for the 'switch' construct

@@ -1,3 +1,5 @@
+package ch02
+
 /* using nullable values and checking for null
 * a reference must be explicitly marked as nullable when null value is possible
 */

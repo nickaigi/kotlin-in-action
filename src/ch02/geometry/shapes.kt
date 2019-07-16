@@ -1,4 +1,4 @@
-package geometry
+package ch02.geometry
 
 import java.util.Random
 

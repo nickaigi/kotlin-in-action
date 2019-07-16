@@ -1,3 +1,5 @@
+package ch02
+
 /* JAVA classes look like this
  * public class Person {
  *   private final String name;

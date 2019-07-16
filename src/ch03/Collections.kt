@@ -1,3 +1,5 @@
+package ch03
+
 import java.lang.StringBuilder
 
 /* we've already seen how to create a new set: 'setOf' function*/

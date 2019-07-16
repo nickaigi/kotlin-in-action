@@ -1,7 +1,7 @@
 /* demonstrates the difference between traditional block body functions
 * expression body functions
  */
-
+package ch02
 fun maxBlock(a: Int, b: Int): Int {
     return if (a > b) a else b
     /* if is an expression, not a statement
