@@ -11,6 +11,15 @@ package ch03
 *    into multiple variables
 * */
 
+fun exampleOne3_4(){
+    val strings: List<String> = listOf("first", "second", "fourteenth")
+    println(strings.last())  //  fourteenth
+
+    val numbers: Collection<Int> = setOf(1, 14, 2)
+    println(numbers.max())  // 14
+}
+
 fun main (args: Array<String>) {
     /* do the things */
+    exampleOne3_4()
 }
