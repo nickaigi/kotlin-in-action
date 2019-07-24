@@ -38,6 +38,34 @@ fun exampleTwo3_4() {
     * just put a * in front of the arg*/
 }
 
+fun example_3_4_3(){
+    /* working with pairs: infix calls calls and destucturing declarations*/
+    val map = mapOf(1 to "one", 7 to "seven", 53 to "fifty-three")
+
+    /* 'to' is not a built-in construct, it is a method invocation called an
+     * 'infix call'
+     *
+     * in an infix call, the method name is placed immediately between the
+     * target object and the parameter, with no extra separators
+     *
+     * therefore:
+     *
+     *    1.to("one")
+     *
+     * is equivalent to
+     *
+     *    1 to "one"
+     * */
+
+    /* to allow a function to be called using the infix notation, you need to
+    * mark it with the 'infix' nodifier*/
+
+    infix fun Any.to(other: Any) = Pair(this, other)
+
+}
+
+
+
 fun main (args: Array<String>) {
     /* do the things */
     val list = listOf("args: ", *args)
