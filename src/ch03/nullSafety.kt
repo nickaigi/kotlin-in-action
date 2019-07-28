@@ -1,0 +1,24 @@
+package ch03
+
+/* Kotlin distinguishes between references that can hold a null (nullable) and those that can not*/
+
+fun main(args: Array<String>) {
+    var a: String = "abc"
+    //a = null  // Compilation Error
+
+    var b: String? = "abc"
+    b = null
+    println(b)
+
+    /* since variable 'a' can never be null, calling methods/properties on 'a' are considered safe
+     * never to raise a NPE */
+
+    val l1 = a.length  // good
+    println(l1)
+
+    /* trying to access the same property on 'b' would not safe
+     * the compiler raises an error */
+
+    val l2 = b.length
+    println(l2)
+}

@@ -15,7 +15,6 @@ fun exampleOne3_4(){
     /* extending the Java Collections API */
     val strings: List<String> = listOf("first", "second", "fourteenth")
     println(strings.last())  //  fourteenth
-
     val numbers: Collection<Int> = setOf(1, 14, 2)
     println(numbers.max())  // 14
     /* Why is it possible to do so many things with collections in Kotlin even
