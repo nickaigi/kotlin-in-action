@@ -21,4 +21,13 @@ fun main(args: Array<String>) {
 
     val l2 = b.length
     println(l2)
+
+    /* checking for null conditions*/
+    /* explicit check
+     *
+     * if (b != null) b.length else -1
+     *
+     * but IDEA introduces the 'Elvis Expression' */
+    val l = b?.length ?: -1
+    println(l)
 }
