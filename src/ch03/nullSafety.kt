@@ -28,6 +28,10 @@ fun main(args: Array<String>) {
      * if (b != null) b.length else -1
      *
      * but IDEA introduces the 'Elvis Expression' */
+
+    /* Elvis operator is not unique to Kotlin.
+    *
+    * if value on LHS is not null, use it. Else use value on RHS*/
     val l = b?.length ?: -1
     println(l)
 }
