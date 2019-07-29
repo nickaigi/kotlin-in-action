@@ -1,4 +1,4 @@
-package ch03
+package nickson
 
 /* Kotlin distinguishes between references that can hold a null (nullable) and those that can not*/
 
@@ -19,7 +19,9 @@ fun main(args: Array<String>) {
     /* trying to access the same property on 'b' would not safe
      * the compiler raises an error */
 
-    val l2 = b.length
+    /* We can however use a safe call. b? */
+
+    val l2 = b?.length
     println(l2)
 
     /* checking for null conditions*/

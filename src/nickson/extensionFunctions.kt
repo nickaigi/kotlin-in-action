@@ -1,4 +1,4 @@
-package ch02
+package nickson
 
 fun main(args: Array<String>) {
     println(changeSpacesToUnderscores("this is my text"))
