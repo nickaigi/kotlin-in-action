@@ -36,4 +36,10 @@ fun main(args: Array<String>) {
     * if value on LHS is not null, use it. Else use value on RHS*/
     val l = b?.length ?: -1
     println(l)
+
+    /* !!  not-null operator */
+    /* converts any value to a non-null type and throws an exception if the value is null */
+
+    /* throws a NPE */
+    val l3 = b!!.length
 }
