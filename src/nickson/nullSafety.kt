@@ -50,4 +50,14 @@ fun main(args: Array<String>) {
     val c = "3"
     val cInt: Int? = c as? Int
     println(c)
+
+    /* Say you have a collection of elements of a nullable type, and want to
+     * to filter non-null elements? Use 'filterNotNull'
+     */
+
+    val nullableList: List<Int?> = listOf(1, 2, null, 4)
+
+    val intList: List<Int> = nullableList.filterNotNull()
+    for (x in intList)
+        println(x)
 }
