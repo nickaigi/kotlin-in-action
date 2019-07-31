@@ -41,5 +41,13 @@ fun main(args: Array<String>) {
     /* converts any value to a non-null type and throws an exception if the value is null */
 
     /* throws a NPE */
-    val l3 = b!!.length
+    //val l3 = b!!.length
+
+    /* Safe Casts
+     * - returns 'null' if the attempt was not successful
+     * - as?
+     * */
+    val c = "3"
+    val cInt: Int? = c as? Int
+    println(c)
 }
