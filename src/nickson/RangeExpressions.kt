@@ -3,7 +3,6 @@ package nickson
 /* Kotlin makes use of the rangeTo() function, or its operator form '..' */
 
 fun main() {
-
     for (i in 1..4) {
         print(i)
     }
@@ -23,4 +22,10 @@ fun main() {
     // until, excludes the upper limit
     println("\nUsing until function")
     for (i in 1 until 10) print(i)
+
+    // can be used in an if statement to check if a value belongs in a range
+    println("\nUsed to check if a value is within a range")
+    if (3 in 1..10) {
+        println("Yes")
+    }
 }
