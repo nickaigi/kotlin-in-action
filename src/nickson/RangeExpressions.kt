@@ -36,5 +36,19 @@ fun main() {
 
     /* Reversed: why would I ever need this? */
     println("\nReversed")
+    /* :: creates a member reference or a class reference */
     (1..9).reversed().forEach(::print)
+
+    /* last, first, step elements */
+    println("\nIf we need the first, step or the last value of the range")
+    println((1..9).first) // 1
+    println((1..9 step 2).step) //2
+    println((3..9).reversed().last) //3
+
+    /* Filtering ranges */
+    println("Filtering")
+    val r = 1..10
+    /* Lambda function */
+    val f = r.filter { it -> it % 2 == 0 }  // print [2, 4, 6, 8, 10]
+    println(f)
 }
