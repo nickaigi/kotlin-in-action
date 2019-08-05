@@ -49,4 +49,16 @@ fun main() {
         }
     }
     println("You earned a ${calculateGrade(79)}")
+
+    /* it
+     * Shorthand for a single arg passed to a Lambda
+     * 'it' represents a lone arg that we pass to the Lambda
+     * */
+
+    val myArray = arrayOf(1, 2, 3, 4, 5, 6)
+    /* longhand */
+    myArray.forEach { item -> println(item * 4) }
+
+    /* shorthand */
+    myArray.forEach { println(it * 4) }
 }
