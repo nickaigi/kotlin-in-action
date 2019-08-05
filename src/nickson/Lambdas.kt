@@ -1,5 +1,7 @@
 package nickson
 
+import kotlin.test.assertTrue
+
 /* Lambdas can be
  * a. passed as an argument to a method
  * b. returned from a method
@@ -13,6 +15,20 @@ package nickson
  * - we don't always need a variable, since the lambda can be an arg to a method
  * - the lambda type is the type of the last command within the lambda
  * */
+
+/* how to pass a Lambda */
+fun invokeLambda(lambda: (Double) -> Boolean): Boolean{
+    return lambda(4.329)
+}
+
+fun whenPassingALambdaObject_thenCallTriggerLambda() {
+    val lambda = { arg: Double ->
+        arg == 4.329
+    }
+
+    val result  = invokeLambda(lambda)
+    assertTrue(result)
+}
 
 fun main() {
     val square = { number: Int -> number * number }
