@@ -64,7 +64,34 @@ class MyFunction: () -> Unit {
  *      2. Anonymous function
  * */
 
+fun greetFunction() {
+    println("Hello")
+}
+
 fun main() {
     val function = MyFunction()
     function()
+    /* providing a function via a function reference */
+    val greet = ::greetFunction
+    greet()
+
+    val anotherGreet: () -> Unit = { println("Hello anotherGreet")}
+    val square: (Int) -> Int = { x -> x * x } // alternative ver { it * it }
+    val producePrinter: () -> () -> Unit = { { println("I am printing") } }
+
+    producePrinter()()
+
+    /* using anonymous functions */
+
+    val greetAnon: () -> Unit = fun() {
+        println("Hello Anon")
+    }
+
+    val squareAnon: (Int) -> Int = fun(x) = x * x
+
+    val producePrinterAnon: () -> () -> Unit = fun() = fun() {
+        println("I am printing")
+    }
+
+    producePrinterAnon()()
 }
