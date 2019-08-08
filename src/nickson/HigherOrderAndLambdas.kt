@@ -94,4 +94,9 @@ fun main() {
     }
 
     producePrinterAnon()()
+
+    /* Remember that Kotlin can also infer Function Types*/
+    val greetInferred = fun() { println("Hello Inferred")}
+    val squareInferred = fun(x:Int) = x * x
+    val producePrinterInferred = fun() = fun() = println("I am printing inferred")
 }
