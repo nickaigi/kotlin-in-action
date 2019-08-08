@@ -56,6 +56,14 @@ class MyFunction: () -> Unit {
     }
 }
 
+/* Function Literal: A Literal describes syntactic sugar for representing values of some types the
+ * language considers important
+ * - A function literal is a special notation used to simplify how a function is defined
+ * - Kotlin has 2 types of function literals
+ *      1. Lambda expression
+ *      2. Anonymous function
+ * */
+
 fun main() {
     val function = MyFunction()
     function()
