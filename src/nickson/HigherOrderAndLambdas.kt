@@ -12,6 +12,21 @@ package nickson
  * interfaces in Java)
  * syntax:
  *      (Type, Type) -> ReturnType
+ *
+ * LHS - parameter types
+ * RHS - the return type (use unit for empty returns)
+ *
+ * Examples:
+ *     () -> Unit
+ *     (Int) -> Int
+ *     () -> () -> Unit   function type that returns another function that returns Unit
+ *                        both functions take no argument
+ *
+ * - Function types are just syntactic sugar for an interface, but the interface
+ * can not be used explicitly.
+ *
+ * - We can still use function types like interfaces, that is using them as 'type arguments'
+ * or implementing them. See class MyFunction
  * */
 
 fun exampleFxTypes(){
@@ -19,9 +34,29 @@ fun exampleFxTypes(){
      * Function Types can be instantiated in multiple ways:
      * 1. Lambda expressions
      * */
-    val filter: (Int) -> Boolean = { it < 2}
+    val filterA: (Int) -> Boolean = { it < 2}
+
+    /* if the compiler can infer the type from the lambda expression, you can
+     * omit the function type */
+    val filterB = {x: Int -> x < 2 }
+
+    /* 2. Anonymous functions: are function declarations without a name */
+    val filterC = fun(x: Int): Boolean = x < 2
+
+    /* 3. Existing function: member functions, top level functions, or existing
+     * functions can be used as an instance of a function type. E.g. getting a reference
+     * to the 'String.filter' function would be
+     */
+    val filterD = String::filter
 }
 
-fun main(){
+class MyFunction: () -> Unit {
+    override fun invoke() {
+        println("I am called")
+    }
+}
 
+fun main() {
+    val function = MyFunction()
+    function()
 }
