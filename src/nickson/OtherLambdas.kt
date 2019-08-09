@@ -23,4 +23,23 @@ fun main() {
     val result = runTransformation(repeatFun)
 
     println("result = $result")
+    /* A value of a function type can be invoked by using its 'invoke(...) operator'
+     *
+     * f.invoke(x) or just f(x)
+     *
+     * If the value has a receiver type, the receiver object should be passed
+     * as the first arg.
+     * Also you can prepend it with the receiver object as if the value were an extension
+     * function
+     * */
+    val stringPlus: (String, String) -> String = String::plus
+    val intPlus: Int.(Int) -> Int = Int::plus
+
+    println(stringPlus.invoke("<-", "->"))
+    println(stringPlus("Hello, ", "world!"))
+
+    println(intPlus.invoke(1, 1))
+    println(intPlus(1, 2))
+    println(2.intPlus(3))  // extension-like call
+
 }
