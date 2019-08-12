@@ -53,4 +53,27 @@ fun main() {
     // leaving out the optional type annotations
     val sumTwo: (Int, Int) -> Int = {x, y -> x + y}
     println("sumTwo(3, 4) = ${sumTwo(3, 4)}")
+
+    /* In Kotlin, if the last parameter of a function is a function,
+     * then a Lambda expression passed as the corresponding argument can be
+     * placed outside the parenthesis
+     * e.g.
+     *      val product = items.fold(1) {acc, e -> acc * e }
+     *
+     * This is known as a 'trailing lambda'
+     *
+     * if the lambda is the only argument to the call, parentheses
+     * can be omitted entirely
+     * */
+
+    /* it:
+     * - It is common to have a lambda that only takes one parameter.
+     * - If the compiler can infer the signature of the lambda, it is allowed
+     * to not declare the only parameter and omit the arrow operator.
+     * - The lone parameter will be implicitly declared under the name 'it'
+     *
+     *      ints.filter { it > 0 }
+     *
+     * - The above literal is of type '(it: Int) -> Boolean'
+     * */
 }
