@@ -42,4 +42,15 @@ fun main() {
     println(intPlus(1, 2))
     println(2.intPlus(3))  // extension-like call
 
+    /* Lambdas
+     *  - always surrounded by  {}
+     *  - curly braces immediately followed by optional type annotations
+     *  - last expression is treated as the return value
+     * */
+
+    val sumOne = {x: Int, y: Int -> x + y}
+    println("sumOne(3, 4) = ${sumOne(3, 4)}")
+    // leaving out the optional type annotations
+    val sumTwo: (Int, Int) -> Int = {x, y -> x + y}
+    println("sumTwo(3, 4) = ${sumTwo(3, 4)}")
 }
