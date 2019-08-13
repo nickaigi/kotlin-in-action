@@ -88,4 +88,8 @@ fun main() {
         return@filter it % 2 == 1
     }
     println("odd numbers: $odd")
+
+    /* if the lambda parameter is unused, you can place an underscore instead of its name */
+    val nick = mapOf("name" to "Nick", "age" to "99")
+    nick.forEach { (_, value) -> println("$value") }
 }
