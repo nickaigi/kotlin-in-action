@@ -92,4 +92,40 @@ fun main() {
     /* if the lambda parameter is unused, you can place an underscore instead of its name */
     val nick = mapOf("name" to "Nick", "age" to "99")
     nick.forEach { (_, value) -> println("$value") }
+
+    /* if you want to explicitly declare the return type when using a lambda,
+     * you are better off using an anonymous function: same as a norm function, but lacks a name
+     *
+     * e.g. using an expression body function
+     *
+     *      fun(x: Int, y: Int): Int = x + y
+     *
+     *  OR
+     *
+     *      fun(x: Int, y: Int): Int {
+     *          return x +y
+     *      }
+     *
+     * using a block body function
+     * */
+
+    /* types can be omitted if they can be inferred. */
+    val greaterThanZero = ints.filter(fun(item) = item > 0)
+    println("greaterThanZero: $greaterThanZero")
+
+    /* One difference between a lambda expression and an anonymous function is the behaviour of 'non-local returns'
+     *  - return statement without a label always  returns from the function declared with the 'fun' keyword
+     *    meaning: a return inside a lambda will return from the enclosing function
+     *    whereas a return inside an anonymous function will return from the anonymous function itself.
+     * */
+
+    /* CLOSURES: a lambda expression or anonymous function (same for a local function and an object expression)
+     * can access its closure: i.e. the variables declared in the outer scope
+     *
+     * - unlike Java, the variables captured in the closure can be modified
+    * */
+
+    var sum = 0
+    ints.filter { it > 0 }.forEach { sum += it }
+    println("sum: $sum")
 }
