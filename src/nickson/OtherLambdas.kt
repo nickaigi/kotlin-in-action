@@ -77,13 +77,15 @@ fun main() {
      * - The above literal is of type '(it: Int) -> Boolean'
      * */
     val ints = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    ints.filter {
+    val even = ints.filter {
         val shouldFilter = it % 2 == 0
         shouldFilter
     }
+    println("even numbers: $even")
 
-    // is equivalent to
-    ints.filter {
-        return@filter it % 2 == 0
+    // is ideally equivalent to
+    val odd = ints.filter {
+        return@filter it % 2 == 1
     }
+    println("odd numbers: $odd")
 }
