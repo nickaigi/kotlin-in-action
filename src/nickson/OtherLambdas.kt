@@ -123,9 +123,12 @@ fun main() {
      * can access its closure: i.e. the variables declared in the outer scope
      *
      * - unlike Java, the variables captured in the closure can be modified
-    * */
+     * */
 
     var sum = 0
     ints.filter { it > 0 }.forEach { sum += it }
     println("sum: $sum")
+    /* Function Literals with receiver
+     *  Nick did not fully understand this concept */
+    val sumThree = fun Int.(other: Int): Int = this + other
 }
