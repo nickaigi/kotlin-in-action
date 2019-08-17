@@ -23,5 +23,11 @@ class InitOderDemo(name: String) {
 }
 
 fun main() {
-    var demo = InitOderDemo("Nickson")
+    InitOderDemo("Nickson")
+    /*
+    First property: Nickson
+    First Initializer block that prints Nickson
+    Second property 7
+    Second initializer block that prints 7
+    */
 }
