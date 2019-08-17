@@ -22,6 +22,17 @@ class InitOderDemo(name: String) {
     }
 }
 
+/* - Note that parameters of the primary constructor can be used in the initializer blocks
+ * - They can also be used in property initializer declared in the class body
+ * */
+
+class Customer(name: String) {
+    val customerKey = name.toUpperCase()
+}
+
+/* - The Kotlin way for declaring and initializing properties is concise*/
+class Student(val firstName: String, val lastName: String, var age: Int)
+
 fun main() {
     InitOderDemo("Nickson")
     /*
@@ -30,4 +41,6 @@ fun main() {
     Second property 7
     Second initializer block that prints 7
     */
+    var myStudent = Student("Nick", "Son", 99)
+    println("Student name is ${myStudent.firstName} ${myStudent.lastName}")
 }
