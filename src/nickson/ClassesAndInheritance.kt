@@ -84,6 +84,17 @@ class Derived(p: Int) : Base(p)
  *      }
 * */
 
+/* Overriding Methods
+ * - Kotlin requires explicitl modifies for overridable members (open) and for overrides*/
+open class Shape{
+    open fun draw(){ /*...*/ }
+    fun fill(){ /*...*/ }
+}
+
+class Circle(): Shape() {
+    override fun draw() { /*...*/ }
+}
+
 fun main() {
     InitOderDemo("Nickson")
     /*
