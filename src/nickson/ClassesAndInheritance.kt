@@ -33,6 +33,27 @@ class Customer(name: String) {
 /* - The Kotlin way for declaring and initializing properties is concise*/
 class Student(val firstName: String, val lastName: String, var age: Int)
 
+/* Secondary Constructor
+ * - A class can also declare a secondary constructors which are prefixed with keyword "constructor"*/
+
+class AnotherPerson {
+    var children: MutableList<AnotherPerson> = mutableListOf<AnotherPerson>()
+
+    constructor(parent: AnotherPerson) {
+        parent.children.add(this)
+    }
+}
+
+class Constructor {
+    init {
+        println("Init block")
+    }
+
+    constructor(i: Int) {
+        println("Constructor")
+    }
+}
+
 fun main() {
     InitOderDemo("Nickson")
     /*
