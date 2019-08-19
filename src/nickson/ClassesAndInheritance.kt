@@ -105,6 +105,22 @@ class Rectangle: Shape() {
     override val vertexCount = 4
 }
 
+/* - Note: you can override a 'val' with a 'var' property but not vice versa
+ * - This is allowed because a 'val' property declares a 'get' method and overriding it as a 'var' additionally
+ * declare a 'set' method in the derived class.
+ * - Note: you can use the 'override' keyword as part of the property declaration in a primary constructor
+ *   e.g
+ *      Interface Shape {
+ *          val vertexCount: Int
+ *      }
+ *
+ *      class Rectangle(override val vertexCount: Int = 4) : Shape
+ *
+ *      class Polygon: Shape {
+ *          override var vertexCount: Int = 0
+ *      }
+ * */
+
 fun main() {
     InitOderDemo("Nickson")
     /*
