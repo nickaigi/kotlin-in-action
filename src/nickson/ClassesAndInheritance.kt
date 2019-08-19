@@ -54,6 +54,24 @@ class Constructor {
     }
 }
 
+/* Inheritance
+ * - All classes in Kotlin have a common SuperClass: Any
+ * - Any has 3 methods:
+ *      - equals()
+ *      - hashCode()
+ *      - toString()
+ * */
+
+class Example // implicitly inherits from Any
+
+/* To declare an explicit supertype, place the type after the colon in the class header*/
+open class Base(p: Int)
+class Derived(p: Int) : Base(p)
+/* 'open'
+ * - The 'open' annotation on a class is the opposite of Java's 'final': it allows others to inherit from the class
+ * - By default, all classes in Kotlin are 'final'
+ * - You also need to be explicit about methods you want to make overridable, also marked with 'open' */
+
 fun main() {
     InitOderDemo("Nickson")
     /*
@@ -64,4 +82,7 @@ fun main() {
     */
     var myStudent = Student("Nick", "Son", 99)
     println("Student name is ${myStudent.firstName} ${myStudent.lastName}")
+
+    /* To create an instance of a class, you call the constructor as if it were a normal function */
+    val customer = Customer("Nickson")
 }
