@@ -70,7 +70,19 @@ class Derived(p: Int) : Base(p)
 /* 'open'
  * - The 'open' annotation on a class is the opposite of Java's 'final': it allows others to inherit from the class
  * - By default, all classes in Kotlin are 'final'
- * - You also need to be explicit about methods you want to make overridable, also marked with 'open' */
+ * - You also need to be explicit about methods you want to make overridable, also marked with 'open'
+ * */
+
+/* - If the derived class has no primary constructor, then  each secondary constructor has to initalize the base type
+ * using the 'super' keyword, or to delegate to another constructor which does that
+ * - Note that in this case, different secondary constructors can call different constructors of the base type
+ * e.g.
+ *
+ *      class MyView: View {
+ *          constructor(ctx: Context): super(ctx)
+ *          constructor(ctx: Context, attrs: Attributes): super(ctx, attrs)
+ *      }
+* */
 
 fun main() {
     InitOderDemo("Nickson")
