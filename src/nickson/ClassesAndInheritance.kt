@@ -85,14 +85,24 @@ class Derived(p: Int) : Base(p)
 * */
 
 /* Overriding Methods
- * - Kotlin requires explicitl modifies for overridable members (open) and for overrides*/
+ * - Kotlin requires explicitl modifies for overridable members (open) and for overrides
+ *
+ * Overriding properties
+ * - Works like overriding methods
+ * */
 open class Shape{
     open fun draw(){ /*...*/ }
     fun fill(){ /*...*/ }
+    // overridable property
+    open val vertexCount: Int = 0
 }
 
 class Circle(): Shape() {
     override fun draw() { /*...*/ }
+}
+
+class Rectangle: Shape() {
+    override val vertexCount = 4
 }
 
 fun main() {
