@@ -146,6 +146,23 @@ class BetterDerived(
     override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived: $it")}
 }
 
+open class BetterRectangle{
+    open fun draw() {
+        println("Drawing a Rectangle")
+    }
+
+    val borderColor: String get () = "black"
+}
+/* Calling the superclass implementation */
+class FilledRectangle : BetterRectangle () {
+    override fun draw() {
+        super.draw()
+        println("Filling the rectangle")
+    }
+
+    val fillColor: String get() = super.borderColor
+}
+
 fun main() {
     InitOderDemo("Nickson")
     /*
@@ -162,4 +179,8 @@ fun main() {
 
     println("Constructing BetterDerived(\"hello\", \"world\")")
     val d = BetterDerived("hello", "world")
+
+    println("\nExample of Calling SuperClass implementation")
+    println("----------------------------------------------")
+    FilledRectangle().draw()
 }
