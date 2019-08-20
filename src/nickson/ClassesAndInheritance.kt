@@ -73,7 +73,7 @@ class Derived(p: Int) : Base(p)
  * - You also need to be explicit about methods you want to make overridable, also marked with 'open'
  * */
 
-/* - If the derived class has no primary constructor, then  each secondary constructor has to initalize the base type
+/* - If the derived class has no primary constructor, then  each secondary constructor has to initialize the base type
  * using the 'super' keyword, or to delegate to another constructor which does that
  * - Note that in this case, different secondary constructors can call different constructors of the base type
  * e.g.
@@ -97,11 +97,11 @@ open class Shape{
     open val vertexCount: Int = 0
 }
 
-class Circle(): Shape() {
+class Circle() : Shape() {
     override fun draw() { /*...*/ }
 }
 
-class Rectangle: Shape() {
+class Rectangle : Shape() {
     override val vertexCount = 4
 }
 
@@ -121,6 +121,31 @@ class Rectangle: Shape() {
  *      }
  * */
 
+/* Derived Class initialization order
+ * - During the construction of a new instance of a derived class, the base class initialization is done as the first
+ * step (preceded only by evaluation of the arguments for the base class constructor) and thus happens before the
+ * initialization logic of the derived class is run
+ * */
+
+open class BetterBase(val name: String) {
+    init {
+        println("Initializing Base")
+    }
+
+    open val size: Int = name.length.also { println("Initializing size in Base: $it") }
+}
+
+class BetterDerived(
+    name: String,
+    val lastName: String
+) : BetterBase(name.capitalize().also { println("Argument for Base: $it") }) {
+    init {
+        println("Initializing Derived")
+    }
+
+    override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived $it")}
+}
+
 fun main() {
     InitOderDemo("Nickson")
     /*
@@ -134,4 +159,7 @@ fun main() {
 
     /* To create an instance of a class, you call the constructor as if it were a normal function */
     val customer = Customer("Nickson")
+
+    println("Constructing BetterDerived(\"hello\", \"world\")")
+    val d = BetterDerived("hello", "world")
 }
