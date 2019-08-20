@@ -152,8 +152,11 @@ open class BetterRectangle{
     }
 
     val borderColor: String get () = "black"
-}
-/* Calling the superclass implementation */
+    }
+/* Calling the superclass implementation
+ * -Inside an inner class, accessing the superclass of the outer class is done with the super keyword
+ * qualified with the outer class name: super@OuterClass
+ * */
 class FilledRectangle : BetterRectangle () {
     override fun draw() {
         super.draw()
@@ -161,6 +164,39 @@ class FilledRectangle : BetterRectangle () {
     }
 
     val fillColor: String get() = super.borderColor
+}
+
+class AnotherFilledRectangle : BetterRectangle() {
+    inner class Filler {
+        fun fill() { /*...*/ }
+        fun drawAndFill() {
+            super@AnotherFilledRectangle.draw()
+            fill()
+            println("Drawn a filled rectangle with color ${super@AnotherFilledRectangle.borderColor}")
+        }
+    }
+}
+
+/* Overriding Rules
+ * - if a class inherits many implementations of the same member from its immediate superclasses, it must override this
+ * member and providee its own implementation (perhaps, using one of the inherited ones). To denote the supertype from
+ * which the inherited implementation is taken, we use 'super' qualified by the supertype name in angle brackets,
+ * e.g. super<Base>
+ */
+
+open class LastRectangle{
+    open fun draw() { println("Drawing from LastRectangle") }
+}
+
+interface Polygon {
+    fun draw() { println("Drawing from Polygon") } // interface members are open by default
+}
+
+class Square() : LastRectangle(), Polygon {
+    override fun draw() {
+        super<LastRectangle>.draw()
+        super<Polygon>.draw()
+    }
 }
 
 fun main() {
@@ -175,12 +211,19 @@ fun main() {
     println("Student name is ${myStudent.firstName} ${myStudent.lastName}")
 
     /* To create an instance of a class, you call the constructor as if it were a normal function */
-    val customer = Customer("Nickson")
+    Customer("Nickson")
 
     println("Constructing BetterDerived(\"hello\", \"world\")")
-    val d = BetterDerived("hello", "world")
+    BetterDerived("hello", "world")
 
     println("\nExample of Calling SuperClass implementation")
     println("----------------------------------------------")
     FilledRectangle().draw()
+    println("\nCalling SuperClass from inner class")
+    println("----------------------------------------------")
+    AnotherFilledRectangle().Filler().drawAndFill()
+    println("\nOverriding Rules")
+    println("----------------------------------------------")
+    Square().draw()
+
 }
