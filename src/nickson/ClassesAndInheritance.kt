@@ -143,7 +143,7 @@ class BetterDerived(
         println("Initializing Derived")
     }
 
-    override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived $it")}
+    override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived: $it")}
 }
 
 fun main() {
