@@ -184,7 +184,7 @@ class AnotherFilledRectangle : BetterRectangle() {
  * e.g. super<Base>
  */
 
-open class LastRectangle{
+open class SecondLastRectangle{
     open fun draw() { println("Drawing from LastRectangle") }
 }
 
@@ -192,12 +192,35 @@ interface Polygon {
     fun draw() { println("Drawing from Polygon") } // interface members are open by default
 }
 
-class Square() : LastRectangle(), Polygon {
+class Square() : SecondLastRectangle(), Polygon {
+    // to avoid ambiguity, the compiler requires that you override draw() and provide its implementation.
     override fun draw() {
-        super<LastRectangle>.draw()
+        super<SecondLastRectangle>.draw()
         super<Polygon>.draw()
     }
 }
+
+/* Abstract classes
+ * - a class and some of its members may be declared 'abstract'
+ * - An abstract member does not have an implementation in its class.
+ * - Note that we do not need to annotate an abstract class or function with 'open' -- it goes without saying
+ * - We can override a non-abstract open member with an abstract one.
+ * */
+
+open class LastPolygon {
+    open fun draw() {}
+}
+
+abstract class LastRectangle : LastPolygon() {
+    override abstract fun draw()
+}
+
+/* Companion objects
+ * - If you need to write a function that can be called without having a class instance but needs access to the
+ * internals of a class (e.g. a factory method), you can write it as a member of an object declaration inside that
+ * class.
+ * - You could also declare a 'companion object' inside your class, you will be able to call its members using only the
+ *  class name as a qualifier */
 
 fun main() {
     InitOderDemo("Nickson")
