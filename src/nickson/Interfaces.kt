@@ -1,5 +1,7 @@
 package nickson
 
+import javax.swing.text.Position
+
 /* Notes on Kotlin Interfaces
  * - Interfaces can contain declarations of abstract methods as well as method implementations
  * - Differ from abstract classes in that interfaces can not store state
@@ -41,5 +43,27 @@ class ChildTwo : InterfaceTwo {
     override val prop: Int = 29
 }
 
+/* An interface can derive from another interface */
+interface Named {
+    val name: String
+}
+
+interface Person: Named {
+    val firstName: String
+    val lastName: String
+    override val name: String
+        get() = "$firstName $lastName"
+}
+
+
+/* why do we need to repeat ourselves with 'firstName' and 'lastName' ?
+ * - DRY ???
+ */
+data class Employee (
+    //implementing 'name' is not required
+    override val firstName: String,
+    override val lastName: String,
+    val position: Position
+) : Person
 
 
