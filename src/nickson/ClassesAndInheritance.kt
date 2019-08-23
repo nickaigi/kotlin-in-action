@@ -6,7 +6,7 @@ package nickson
  * - Initializer blocks are executed in the same order as they appear in the class body
  * */
 
-class Person(firstName: String)
+class PersonPlain(firstName: String)
 
 class InitOderDemo(name: String) {
     val firstProperty = "First property: $name".also(::println)

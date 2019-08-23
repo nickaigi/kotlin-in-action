@@ -48,7 +48,7 @@ interface Named {
     val name: String
 }
 
-interface Person: Named {
+interface PersonA: Named {
     val firstName: String
     val lastName: String
     override val name: String
@@ -64,7 +64,7 @@ data class Employee (
     override val firstName: String,
     override val lastName: String,
     val position: Position
-) : Person
+) : PersonA
 
 /* Resolving overriding conflicts */
 interface A {
