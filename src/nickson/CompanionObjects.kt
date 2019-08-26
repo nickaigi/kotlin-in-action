@@ -9,7 +9,14 @@ class EventManager {
     companion object FireBaseManager {}
 }
 
+// companion object name is optional
 
+class AnotherEventManager {
+    companion object {}
+}
+
+// TODO: read the documentation on CLASSES AND OBJECTS sequentially.
 fun main() {
     val firebaseManager = EventManager.FireBaseManager
+    val anotherEventManager = AnotherEventManager.Companion
 }
