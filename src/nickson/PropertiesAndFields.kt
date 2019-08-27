@@ -26,12 +26,23 @@ fun copyAddress(address: Address) : Address {
     return result
 }
 
+// Let's describe a useless bag
 class Bag {
-    var color: String = "Black"
-    var size: Int = 0
-    var isEmpty: Boolean = true
+    val color: String = "Black"
+    val size: Int = 0
+    val isEmpty: Boolean
         get() = this.size == 0
+    }
 }
+
+/* using a setter
+ * - by convention, the parameter passed to a setter is known as 'value'
+ *      var stringRepresentaion: String
+ *          get() = this.toString()
+ *          set(value) = {
+ *              setDataFromString(value) // parses the string and assigns values to other properties
+ *          }
+ * */
 
 fun main() {
     var allByDefault: Int?
@@ -41,7 +52,5 @@ fun main() {
     val inferredType = 1 // has type Int and a default getter
 
     var bag = Bag()
-    println("${bag.size}, ${bag.isEmpty}")
-    bag.size = 4
-    println("After adding to the bag: size is ${bag.size} and isEmpty: ${bag.isEmpty}")
+    println("Bag: ${bag.size}, ${bag.isEmpty}")
 }
