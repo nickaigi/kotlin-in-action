@@ -69,6 +69,8 @@ class Bag {
  * accessors, or if a custom accessor references it through the 'field' identifier.
  *
  * - There will be no backing field on the 'isEmpty' property on 'class Bag'
+ *
+ * TODO: Backing properties
  */
 
 fun main() {
