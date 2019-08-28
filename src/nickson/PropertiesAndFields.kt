@@ -63,6 +63,12 @@ class Bag {
  * - Fields cannot be declared directly in Kotlin classes.
  * - When a backing field is needed, Kotlin provides it immediately.
  * - The backing field can be referenced in the accessors using 'field' identifier.
+ *
+ * - The 'field' identifier can only be used in the accessors of the property
+ * - A backing field will be generated for a property if it uses the default implementation of at least one of the
+ * accessors, or if a custom accessor references it through the 'field' identifier.
+ *
+ * - There will be no backing field on the 'isEmpty' property on 'class Bag'
  */
 
 fun main() {
