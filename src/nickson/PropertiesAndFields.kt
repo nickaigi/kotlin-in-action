@@ -8,7 +8,7 @@ package nickson
  *
  * - The initializer, getter and setter are optional.
  * - Property type is optional if it can be inferred from the initializer (or from the getter return type)
- * */
+ */
 
 class Address {
     var name: String = "Nickson K"
@@ -38,22 +38,32 @@ class Bag {
         private set // setter is private, and has default implementation
     // var setterWithAnnotation: Any? = null
     //    @Inject set // annotate the setter with Inject
+    var counter =0 // NoteL the initializer assigns the backing field directly
+        set(value) {
+            if (value >= 0) field  = value
+        }
 }
 
 /* using a setter
  * - by convention, the parameter passed to a setter is known as 'value'
  *
- *      var stringRepresentaion: String
+ *      var stringRepresentation: String
  *          get() = this.toString()
  *          set(value) = {
  *              setDataFromString(value) // parses the string and assigns values to other properties
  *          }
- * */
+ */
 
 /* Since Kotlin 1.1 you can omit the property type if it can be inferred from the getter*/
 
 /* If you need to change the visibility of an accessor or to annotate it, but don't need to chane the default
  * implementation, you can define the accessor without defining its body*/
+
+/* Backing Fields:
+ * - Fields cannot be declared directly in Kotlin classes.
+ * - When a backing field is needed, Kotlin provides it immediately.
+ * - The backing field can be referenced in the accessors using 'field' identifier.
+ */
 
 fun main() {
     var allByDefault: Int?
