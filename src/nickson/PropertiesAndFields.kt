@@ -1,5 +1,7 @@
 package nickson
 
+import java.lang.AssertionError
+
 /* Declaring properties
  * - properties in Kotlin can be mutable (var) or read-only (val)
  * - to use a property, refer to it by its name
@@ -42,6 +44,15 @@ class Bag {
         set(value) {
             if (value >= 0) field  = value
         }
+
+    private var _table: Map<String, Int>? = null
+    public val table: Map<String, Int>
+        get() {
+            if (_table == null) {
+                _table = HashMap() // Type parameters are inferred
+            }
+            return _table ?: throw AssertionError("Set to null by another thread")
+        }
 }
 
 /* using a setter
@@ -69,10 +80,14 @@ class Bag {
  * accessors, or if a custom accessor references it through the 'field' identifier.
  *
  * - There will be no backing field on the 'isEmpty' property on 'class Bag'
- *
- * TODO: Backing properties
  */
 
+/* Backing Properties:
+ * - If you want to do something that does not fit into this "implicit backing field" scheme, you can always fall back
+ * to having a backing property
+ */
+
+//TODO: Compile-Time constants
 fun main() {
     var allByDefault: Int?
     var initialized = 1
