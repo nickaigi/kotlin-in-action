@@ -99,6 +99,24 @@ class Bag {
  * - Can be used in annotations
  */
 
+/* Late-Initialized Properties and Variables
+ * - Normally, properties declared as having non-null types, must be initialized in the constructor.
+ * - This may not be always convenient.
+ *
+ * class TestSubject(var subject: String)
+ *     public class MyTest {
+ *     lateinit var subject: TestSubject
+ *
+ *     @SetUp fun setup() {
+ *         subject = TestSubject()
+ *     }
+ *
+ *     @Test fun test() {
+ *         subject.method()
+ *     }    
+ * }
+ */
+
 const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
 
 @Deprecated(SUBSYSTEM_DEPRECATED) fun foo() {
