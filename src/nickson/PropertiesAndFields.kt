@@ -115,6 +115,16 @@ class Bag {
  *         subject.method()
  *     }    
  * }
+ *
+ * - The modifier can be used on 'var' properties declared inside the body of a class (not a primary constructor, and
+ * only when the property does not have a custom getter or setter)
+ * - Must be non-null, and it must not be a primitive type.
+ *
+ * - To check whether a lateinit var has already initialized, use '.isInitialized' on the reference to that property.
+ *
+ *      if (foo::bar.isInitialized) {
+ *          println(foo.bar)
+ *      }
  */
 
 const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
