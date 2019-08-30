@@ -40,11 +40,12 @@ class Bag {
         private set // setter is private, and has default implementation
     // var setterWithAnnotation: Any? = null
     //    @Inject set // annotate the setter with Inject
-    var counter =0 // NoteL the initializer assigns the backing field directly
+    var counter =0 // Note the initializer assigns the backing field directly
         set(value) {
             if (value >= 0) field  = value
         }
 
+    // backing property examplekkk
     private var _table: Map<String, Int>? = null
     public val table: Map<String, Int>
         get() {
@@ -87,7 +88,22 @@ class Bag {
  * to having a backing property
  */
 
-//TODO: Compile-Time constants
+/* Compile-time constants:
+ * - Properties whose value is known at compile time can be marked as 'compile time constants' using the 'const'
+ * modifier.
+ * - Must meet the following requirements:
+ *      i. Be top-level or members of an object declaration or a companion object.
+ *     ii. Be initialized with a value of type 'String' or a primitive type
+ *    iii. Must use the default getter
+ *
+ * - Can be used in annotations
+ */
+
+const val SUBSYSTEM_DEPRECATED: String = "This subsystem is deprecated"
+
+@Deprecated(SUBSYSTEM_DEPRECATED) fun foo() {
+    //...
+}
 fun main() {
     var allByDefault: Int?
     var initialized = 1
@@ -97,4 +113,6 @@ fun main() {
 
     var bag = Bag()
     println("Bag: ${bag.size}, ${bag.isEmpty}")
+
+
 }
