@@ -60,8 +60,13 @@ class Unrelated(outer: Outer) {
     // Outer.Nested is not visible, and Nested::e is not visible either
 }
 
-// TODO: Constructors
+/* Constructors:
+ * - To specify a visibility of the primary constructor of a class, use the following syntax (note you need to add an
+ * explicit 'constructor' keyword)
+ *
+ * - By default, all constructors are 'public'
+ */
 
-fun main() {
-
+class AnotherC private constructor(a: Int) {
+    // ...
 }
