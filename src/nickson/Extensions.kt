@@ -31,8 +31,20 @@ fun RectangeA.getName() = "Rectangle"
 fun printClassName(s: ShapeA ) {
     println(s.getName())
 }
+
+class ExampleA {
+    fun printFunctionType() {
+        println("Class method")
+    }
+}
+
+/* Member function wins over extension function */
+
+fun ExampleA.printFunType() { println("Extension function")}
+
 fun main() {
     val list = mutableListOf(1, 2, 3)
     list.swap(0, 2)
-    printClassName(RectangeA())
+    printClassName(RectangeA()) // Shape
+    ExampleA().printFunctionType()  // Class method
 }
