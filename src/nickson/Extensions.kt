@@ -19,7 +19,20 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
     this[index1] = tmp
 }
 
+/* Extensions merely make new functions callable with the dot-notation on variables of this type */
+open class ShapeA
+
+class RectangeA: ShapeA()
+
+fun ShapeA.getName() = "Shape"
+
+fun RectangeA.getName() = "Rectangle"
+
+fun printClassName(s: ShapeA ) {
+    println(s.getName())
+}
 fun main() {
     val list = mutableListOf(1, 2, 3)
     list.swap(0, 2)
+    printClassName(RectangeA())
 }
