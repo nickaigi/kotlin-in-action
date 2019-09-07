@@ -51,6 +51,19 @@ fun ExampleA.printFunctionType() { println("Extension function")}
 
 fun ExampleA.printFunctionType(i: Int) { println("Extension Function") }
 
+/* Nullable receiver
+ * - Extensions can be defined with a nullable receiver type.
+ * - Can be called on an object variable even if its value is null, and can check for 'this == null' inside the body
+ */
+
+fun Any?.toString() : String {
+    if (this == null) return "null"
+    /* after the null check, 'this' is autocast to a non-null type, so the toString() below resolves to the member
+     * function of the Any class
+     */
+    return toString()
+}
+
 fun main() {
     val list = mutableListOf(1, 2, 3)
     list.swap(0, 2)
