@@ -38,13 +38,23 @@ class ExampleA {
     }
 }
 
-/* Member function wins over extension function */
+/* Member function wins over extension function
+ * or as InteliJ says it:
+ * Extension is shadowed by member
+ */
 
-fun ExampleA.printFunType() { println("Extension function")}
+fun ExampleA.printFunctionType() { println("Extension function")}
+
+/* It is however perfectly OK for extension functions to overload member functions which have the same name
+ * but a different signature
+ */
+
+fun ExampleA.printFunctionType(i: Int) { println("Extension Function") }
 
 fun main() {
     val list = mutableListOf(1, 2, 3)
     list.swap(0, 2)
     printClassName(RectangeA()) // Shape
     ExampleA().printFunctionType()  // Class method
+    ExampleA().printFunctionType(1)
 }
