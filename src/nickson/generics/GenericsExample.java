@@ -26,7 +26,9 @@ class Container<T> {
     }
 }
 
-/* What if we wanted to limit our container to only Number classes? */
+/* What if we wanted to limit our container to only Number classes?
+ * Soln: we can bind a type to the generic
+ */
 class NumberContainer<T extends Number> {
     T value;
 
@@ -36,6 +38,16 @@ class NumberContainer<T extends Number> {
 
     public void setValue(T value) {
         this.value = value;
+    }
+
+    /* <? extends T>
+     * - accept all subclasses of T, in our case int, float, double
+     *
+     * <? super T>
+     * - accept all superclasses of T
+     */
+    public void demo(ArrayList<? extends T> obj) {
+        // TODO things
     }
 }
 
