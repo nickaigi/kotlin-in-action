@@ -24,9 +24,8 @@ public class GenericsExample {
         /* attempting to add a non int results in compile time error: incompatible types
          * this has been achieved by using the concept of generics
          */
-        integerValues.add("Nickson"); // error
-
-        /* To enforce type safety */
+        
+        //integerValues.add("Nickson"); // error
     }
 
 }
