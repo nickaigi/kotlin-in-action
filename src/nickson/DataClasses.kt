@@ -1,6 +1,12 @@
 package nickson
 
 /* DATA CLASSES
+ * data classes have to fulfill the following requirements:
+ *      i. primary constructor needs to have at least one parameter
+ *     ii. all primary constructor parameters must be marked 'var' or 'val'
+ *    iii. Data classes cannot be abstract, open, sealed or inner.
+ *
+ * TODO: properties declared in the class body
  *
  * - Every time we check for equality using ' == ' operator behind the scenes the ' == ' operator calls a function
  * named 'equals'
