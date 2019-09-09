@@ -41,6 +41,15 @@ data class Recipe(val title: String, val isVegetarian: Boolean)
  *   constructor.
  */
 
+/* copy function
+ * - If you want to create a new copy of a data object, altering some of its properties, but leaving the rest of intact
+ * you can use the copy() function.
+ * - Call the function on the object you want to copy, passing in the names of any properties you wish to alter along
+ * with their new values.
+ */
+
+/* TODO: componentN functions */
+
 fun main() {
     var r1 = RecipeClass("Chicken Tikka", false)
     var r2 = RecipeClass("Chicken Tikka", false)
@@ -52,4 +61,14 @@ fun main() {
 
     // equal objects return the same hasCode Value
     println("r3: ${r3.hashCode()} \nr4: ${r4.hashCode()}")
+
+    /* toString()
+     * - It is redundant to call toString() inside a string template
+     */
+    println("r3.toString() : $r3")
+
+    // if we had "Thai Curry" recipe
+    var r5 = Recipe("Thai Curry", false)
+    var r6 = r5.copy(isVegetarian = true)
+    println("r6: $r6")
 }
