@@ -18,3 +18,18 @@ package nickson
  *
  * - You ca override these functions if you so wished.
  */
+
+/* we might want 'equals' to check whether two objects are equivalent' */
+
+class Recipe(val title: String, val isVegetarian: Boolean){}
+
+/* - you might want the == operator to evaluate to true if it's used to compare two 'Recipe' objects that have matching
+ * 'title' and 'isVegetarian' properties'
+ * - you may write extra code to override 'equals' to fit our use case, but the Kotlin devs came up with a better way,
+ * 'data class'
+ */
+
+fun main() {
+    var r1 = Recipe("Chicken Tikka", false)
+    var r2 = Recipe("Chicken Tikka", false)
+}
