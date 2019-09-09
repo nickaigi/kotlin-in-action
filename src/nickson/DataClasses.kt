@@ -35,6 +35,12 @@ data class Recipe(val title: String, val isVegetarian: Boolean)
  * If two objects store the same data, they can be considered equal.
  */
 
+/* Recipe data class:
+ * - hashCode() returns the same value for each object if equals is true.
+ * - toString() returns a useful string that contains the value of each property that's defined in the data class
+ *   constructor.
+ */
+
 fun main() {
     var r1 = RecipeClass("Chicken Tikka", false)
     var r2 = RecipeClass("Chicken Tikka", false)
@@ -43,4 +49,7 @@ fun main() {
     var r3 = Recipe("Chicken Tikka", false)
     var r4 = Recipe("Chicken Tikka", false)
     println("Testing == operator on data class: ${ r3 == r4 }")
+
+    // equal objects return the same hasCode Value
+    println("r3: ${r3.hashCode()} \nr4: ${r4.hashCode()}")
 }
