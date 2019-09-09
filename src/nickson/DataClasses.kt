@@ -21,15 +21,26 @@ package nickson
 
 /* we might want 'equals' to check whether two objects are equivalent' */
 
-class Recipe(val title: String, val isVegetarian: Boolean){}
+class RecipeClass(val title: String, val isVegetarian: Boolean)
+
+data class Recipe(val title: String, val isVegetarian: Boolean)
 
 /* - you might want the == operator to evaluate to true if it's used to compare two 'Recipe' objects that have matching
  * 'title' and 'isVegetarian' properties'
  * - you may write extra code to override 'equals' to fit our use case, but the Kotlin devs came up with a better way,
  * 'data class'
+ *
+ * - data class: is one that lets you create objects whose main purpose is to store data.
+ * - Its implementation of 'equals' checks whether two data objects hold the same property values.
+ * If two objects store the same data, they can be considered equal.
  */
 
 fun main() {
-    var r1 = Recipe("Chicken Tikka", false)
-    var r2 = Recipe("Chicken Tikka", false)
+    var r1 = RecipeClass("Chicken Tikka", false)
+    var r2 = RecipeClass("Chicken Tikka", false)
+    println("Testing == operator on classes: ${ r1 == r2 }")
+
+    var r3 = Recipe("Chicken Tikka", false)
+    var r4 = Recipe("Chicken Tikka", false)
+    println("Testing == operator on data class: ${ r3 == r4 }")
 }
