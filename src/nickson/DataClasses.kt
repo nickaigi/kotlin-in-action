@@ -26,6 +26,8 @@ package nickson
 
 /* we might want 'equals' to check whether two objects are equivalent' */
 
+/* TODO: Destructuring Declarations and ComponentN functions */
+
 class RecipeClass(val title: String, val isVegetarian: Boolean)
 
 data class Recipe(val title: String, val isVegetarian: Boolean)
@@ -99,4 +101,9 @@ fun main() {
     println("Only properties declared in the primary constructor are used in data class functions")
     val person3 = person1.copy()
     println("person3, a copy of person1 has age ${person3.age}")
+
+    /* Component Functions and Destructuring declarations */
+    println("Component Functions and Destructuring declarations")
+    val (name, isVegetarian) = r3
+    println("$name and $isVegetarian")
 }
