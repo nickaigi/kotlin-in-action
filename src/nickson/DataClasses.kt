@@ -6,7 +6,6 @@ package nickson
  *     ii. all primary constructor parameters must be marked 'var' or 'val'
  *    iii. Data classes cannot be abstract, open, sealed or inner.
  *
- * TODO: properties declared in the class body
  *
  * - Every time we check for equality using ' == ' operator behind the scenes the ' == ' operator calls a function
  * named 'equals'
@@ -30,6 +29,17 @@ package nickson
 class RecipeClass(val title: String, val isVegetarian: Boolean)
 
 data class Recipe(val title: String, val isVegetarian: Boolean)
+
+/* Properties declared in the class body:
+ * - Note that the compiler only uses the properties defined inside the primary constructor for the automatically
+ * generated functions.
+ * - To exclude a property from the generated implementations, declare it inside the class body.
+ * - In our data class Person: only the 'name' will be used inside toString(), equals(), hasCode() and copy()
+ * - Two 'Person' objects can have different ages, they will be treated as equal.
+ */
+data class Person(val name: String) {
+    var age: Int = 0
+}
 
 /* - you might want the == operator to evaluate to true if it's used to compare two 'Recipe' objects that have matching
  * 'title' and 'isVegetarian' properties'
@@ -77,4 +87,16 @@ fun main() {
     var r5 = Recipe("Thai Curry", false)
     var r6 = r5.copy(isVegetarian = true)
     println("r6: $r6")
+
+    val person1 = Person("Nickson")
+    person1.age = 20
+
+    val person2 = Person("Nickson")
+    person2.age = 10
+    println("person1.age: ${person1.age}  and person2.age: ${person2.age}")
+    println("test for equality yields ${ person1 == person2 }") // true
+
+    println("Only properties declared in the primary constructor are used in data class functions")
+    val person3 = person1.copy()
+    println("person3, a copy of person1 has age ${person3.age}")
 }
