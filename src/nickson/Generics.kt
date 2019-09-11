@@ -17,6 +17,8 @@ class Box<T>(t: T) {
  * if the type can be inferred by the compiler
  */
 
+/* PECS: Produce-Extends, Consumer-Super */
+
 fun main() {
 
     var b = Box(2)
