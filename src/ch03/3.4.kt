@@ -33,7 +33,7 @@ fun exampleTwo3_4() {
     * unpack the array, so that every array element becomes a separate argument
     * to the function
     *
-    * we use a 'spsread operator'
+    * we use a 'spread operator'
     * just put a * in front of the arg*/
 }
 
