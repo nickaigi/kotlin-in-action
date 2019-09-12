@@ -37,6 +37,8 @@ fun main() {
      *
      * - Arrays are mutable, so they can't be updated.
      * This is a problem, if your code relies on the array not changing, this may be a source of bugs.
+     *
+     * Use alternatives to Arrays provided by Kotlin -> Collections
      */
 
 }
