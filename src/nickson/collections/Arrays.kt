@@ -2,7 +2,7 @@ package nickson.collections
 
 fun main() {
     // make an array
-    var array = arrayOf(1, 3, 2)
+    val array = arrayOf(1, 3, 2)
 
     // make an array initialized with nulls
     val nullArray: Array<String?> = arrayOfNulls(2)
@@ -28,5 +28,15 @@ fun main() {
 
     // sor the array in a natural order (works for numbers, Strings, Chars and Booleans)
     array.sort()
+
+    /* Drawbacks of Arrays
+     * - You can not change an array's size
+     * When you create an array, the compiler infers its size from the number of items its's initialized with.
+     * Its size is then fixed for ever.
+     * The array won't grow, if you want to add a new item to it, and won't shrink if you want to remove an item
+     *
+     * - Arrays are mutable, so they can't be updated.
+     * This is a problem, if your code relies on the array not changing, this may be a source of bugs.
+     */
 
 }
