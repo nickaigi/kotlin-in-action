@@ -20,6 +20,11 @@ package nickson.collections
  * Simple Lists, Sets and Maps are 'immutable'
  *
  * Kotlin provides 'MutableList', 'MutableSet' and 'MutableMap'
+ *
+ * MutableList:
+ * - When you want a List whose values you can update.
+ * - All functions available on List
+ * - Has extra functions used to add/remove values or update or rearrange existing ones.
  */
 
 fun main() {
@@ -46,5 +51,14 @@ fun main() {
     if (shopping.contains("Milk")) {
         println(shopping.indexOf("Milk")) // 2
     }
+
+    val myShopping = mutableListOf("Tea", "Eggs")
+    myShopping.add("Milk")
+    println("added to a mutableList")
+    for(item in myShopping)
+        println("item: $item")
+
+    // to add at a specific index:
+    myShopping.add(1, "Milk")
 
 }
