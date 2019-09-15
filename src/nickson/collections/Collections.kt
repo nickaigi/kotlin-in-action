@@ -27,6 +27,12 @@ package nickson.collections
  * - Has extra functions used to add/remove values or update or rearrange existing ones.
  */
 
+fun printList(list: List<String>) {
+    for (item in list) {
+        println(item)
+    }
+}
+
 fun main() {
     // you can be explicit with the List's type like
     // val shopping: List<String>
@@ -44,9 +50,7 @@ fun main() {
     }
 
     /* to loop through a list */
-    for (item in shopping) {
-        println(item)
-    }
+    printList(shopping)
 
     if (shopping.contains("Milk")) {
         println(shopping.indexOf("Milk")) // 2
@@ -54,11 +58,29 @@ fun main() {
 
     val myShopping = mutableListOf("Tea", "Eggs")
     myShopping.add("Milk")
-    println("added to a mutableList")
-    for(item in myShopping)
+    println("Milk: added to mutableList")
+    for(item in myShopping) {
         println("item: $item")
+    }
 
     // to add at a specific index:
-    myShopping.add(1, "Milk")
+    myShopping.add(1, "Coffee")
+
+    // there are two ways to remove items from a mutableList
+    if (myShopping.contains("Milk")) {
+        myShopping.remove("Milk")
+    }
+
+    if (myShopping.size > 1) {
+        myShopping.removeAt(1)
+    }
+
+    //remove and replace
+    if (myShopping.size > 0) {
+        myShopping[0] = "Bacon"
+    }
+
+    /* you can sort() and reverse() a mutableList */
+
 
 }
