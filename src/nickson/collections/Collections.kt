@@ -28,9 +28,11 @@ package nickson.collections
  */
 
 fun printList(list: Collection<String>) {
+    println("---------------------------------------------------\n")
     for (item in list) {
         println(item)
     }
+    println("\n---------------------------------------------------\n")
 }
 
 fun main() {
@@ -46,7 +48,7 @@ fun main() {
      */
 
     if (shopping.isNotEmpty()) {
-        println("List indexing: shopping[0] = ${shopping[0]}")
+        println("\nList indexing: shopping[0] = ${shopping[0]}")
     }
 
     /* to loop through a list */
@@ -57,25 +59,37 @@ fun main() {
     }
 
     val myShopping = mutableListOf("Tea", "Eggs")
+    println("created a mutable list with:")
+    printList(myShopping)
     myShopping.add("Milk")
-    println("Milk: added to mutableList")
+    println("\nAdded to the end of mutable list")
     printList(myShopping)
 
     // to add at a specific index:
     myShopping.add(1, "Coffee")
+    println("Added at index 1")
+    printList(myShopping)
 
     // there are two ways to remove items from a mutableList
     if (myShopping.contains("Milk")) {
+        println("\nList contains \"Milk\", so we list.remove()")
         myShopping.remove("Milk")
+        printList(myShopping)
     }
 
     if (myShopping.size > 1) {
+        println("checked: list.size > 1\ntrue")
         myShopping.removeAt(1)
+        println("using: list.removeAt(1)")
+        printList(myShopping)
     }
 
     //remove and replace
     if (myShopping.size > 0) {
+        println("checked: list.size > 0\ntrue")
+        println("list[0] = \"Bacon\"")
         myShopping[0] = "Bacon"
+        printList(myShopping)
     }
 
     /* you can sort() and reverse() a mutableList */
