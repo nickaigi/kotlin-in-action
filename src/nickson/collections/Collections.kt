@@ -58,7 +58,7 @@ fun main() {
         println(shopping.indexOf("Milk")) // 2
     }
 
-    val myShopping = mutableListOf("Tea", "Eggs")
+    val myShopping = mutableListOf("Tea", "Eggs", "Donuts", "Croissants", "Sausages")
     println("created a mutable list with:")
     printList(myShopping)
     myShopping.add("Milk")
@@ -99,5 +99,9 @@ fun main() {
 
     println("MutableList.sort()")
     myShopping.sort()
+    printList(myShopping)
+
+    println("To randomize the MutableList, use shuffle()")
+    myShopping.shuffle()
     printList(myShopping)
 }
