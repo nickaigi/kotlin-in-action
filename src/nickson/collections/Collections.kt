@@ -72,13 +72,13 @@ fun main() {
 
     // there are two ways to remove items from a mutableList
     if (myShopping.contains("Milk")) {
-        println("\nList contains \"Milk\", so we list.remove()")
+        println("\nMutableList contains \"Milk\", so we list.remove()")
         myShopping.remove("Milk")
         printList(myShopping)
     }
 
     if (myShopping.size > 1) {
-        println("checked: list.size > 1\ntrue")
+        println("checked: MutableList.size > 1\ntrue")
         myShopping.removeAt(1)
         println("using: list.removeAt(1)")
         printList(myShopping)
@@ -86,13 +86,18 @@ fun main() {
 
     //remove and replace
     if (myShopping.size > 0) {
-        println("checked: list.size > 0\ntrue")
-        println("list[0] = \"Bacon\"")
+        println("checked: MutableList.size > 0\ntrue")
+        println("MutableList[0] = \"Bacon\"")
         myShopping[0] = "Bacon"
         printList(myShopping)
     }
 
     /* you can sort() and reverse() a mutableList */
+    println("MutableList.reverse()")
+    myShopping.reverse()
+    printList(myShopping)
 
-
+    println("MutableList.sort()")
+    myShopping.sort()
+    printList(myShopping)
 }
