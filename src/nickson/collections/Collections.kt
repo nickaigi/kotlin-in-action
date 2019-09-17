@@ -104,4 +104,23 @@ fun main() {
     println("To randomize the MutableList, use shuffle()")
     myShopping.shuffle()
     printList(myShopping)
+
+    val toAdd = listOf("Cookies", "Cheese")
+    println("Using addAll($toAdd)")
+    myShopping.addAll(toAdd)
+    printList(myShopping)
+
+    val toRemove = listOf("Donuts", "Sausages")
+    println("Using removeAll($toRemove)")
+    myShopping.removeAll(toRemove)
+    printList(myShopping)
+
+    val toRetain = listOf("Eggs", "Bacon")
+    println("Using toRetain($toRetain")
+    myShopping.retainAll(toRetain)
+    printList(myShopping)
+
+    println("Using clear()")
+    myShopping.clear()
+    printList(myShopping)
 }
