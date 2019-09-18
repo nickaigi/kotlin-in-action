@@ -123,4 +123,12 @@ fun main() {
     println("Using clear()")
     myShopping.clear()
     printList(myShopping)
+
+    println("Lets repopulate MutableList: myShopping.addAll($toAdd)")
+    myShopping.addAll(toAdd)
+    printList(myShopping)
+
+    println("Copy from one MutableList to another: use toMutableList()")
+    val myOtherShopping = myShopping.toMutableList()
+    printList(myOtherShopping)
 }
