@@ -26,6 +26,7 @@ fun printSet(set: Collection<String>) {
     }
     println("---------------------------------------------------\n")
 }
+
 fun main() {
     val friendSet = setOf("Jim", "Sue", "Nick")
     printSet(friendSet)
@@ -33,10 +34,21 @@ fun main() {
     val duplicateFriendSet = setOf("Jim", "Sue", "Nick", "Jim")
     printSet(duplicateFriendSet)  // Jim, Sue, Nick
 
-    /* Demo: Hash codes and equality */
+    /* Demo: Hash codes and equality
+     * 1. Equality usig the === operator
+     */
     val a = "Sue"
     val b = a
     val set = setOf(a, b)
 
     printSet(set) // Sue
+
+    /* Euality using the == operator
+     * - If you want Set to treat two different Recipe objects (data class Recipe), as equal, or equivalent, you have
+     * two options:
+     *      1. Make Recipe a data class
+     *      2. Override 'hashCode' and 'equals' functions it inherits from 'Any'
+     *
+     * Option #1 is easiest.
+     */
 }
