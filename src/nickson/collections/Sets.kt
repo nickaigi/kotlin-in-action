@@ -5,6 +5,18 @@ package nickson.collections
  * - A set is an ordered collection with no duplicate values.
  * - A set holds only distinct/unique values, duplicates will be ignored.
  * - Do not have a 'get', you can use '.contains' to check for cardinality
+ *
+ * - How does a set check for duplicates?
+ *      1. The Set gets the object's hash code, and compares it with the hash code of the objects already in the set.
+ *          If the Set has no matching hash codes for the new value, the Set assumes that it's not a duplicate, and adds
+ *          the new value.
+ *
+ *      2. The Set uses the ==== operator to compare the new value against any objects it contains with the same hash
+ *          code.
+ *          === checks whether two references refer to the same object.
+ *
+ *      3. The Set uses the == operator to compare the new value against any objects it contains with matching hash
+ *          codes.
  */
 
 fun printSet(set: Collection<String>) {
@@ -20,4 +32,11 @@ fun main() {
 
     val duplicateFriendSet = setOf("Jim", "Sue", "Nick", "Jim")
     printSet(duplicateFriendSet)  // Jim, Sue, Nick
+
+    /* Demo: Hash codes and equality */
+    val a = "Sue"
+    val b = a
+    val set = setOf(a, b)
+
+    printSet(set) // Sue
 }
