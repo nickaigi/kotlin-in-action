@@ -43,7 +43,7 @@ fun main() {
 
     printSet(set) // Sue
 
-    /* Euality using the == operator
+    /* Equality using the == operator
      * - If you want Set to treat two different Recipe objects (data class Recipe), as equal, or equivalent, you have
      * two options:
      *      1. Make Recipe a data class
