@@ -17,6 +17,18 @@ package nickson.collections
  *
  *      3. The Set uses the == operator to compare the new value against any objects it contains with matching hash
  *          codes.
+ *
+ * Rules for overriding hashCode and equals:
+ * - If two objects are equal, they must have matching hash codes
+ * - If two objects are equal, calling 'equals' on either object must return true
+ *      if (a.equals(b)) then (b.equals(a))
+ *
+ * a.equals(b) must also mean that a.hashCode() == b.hashCode()
+ *
+ * But
+ *
+ * a.hashCode() == b.hashCode() does not have to mean that a.equals(b)
+ * 
  */
 
 fun printSet(set: Collection<String>) {
@@ -35,7 +47,7 @@ fun main() {
     printSet(duplicateFriendSet)  // Jim, Sue, Nick
 
     /* Demo: Hash codes and equality
-     * 1. Equality usig the === operator
+     * 1. Equality using the === operator
      */
     val a = "Sue"
     val b = a
