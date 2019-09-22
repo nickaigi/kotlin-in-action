@@ -29,6 +29,17 @@ package nickson.collections
  *
  * a.hashCode() == b.hashCode() does not have to mean that a.equals(b)
  *
+ * MutableSet
+ * - subtype of 'Set' with extra functions that you can use to add/remove values.
+ * - defined using 'mutableSetOf'
+ * - You can use
+ *      - addAll(<collection>)
+ *      - removeAll(<collection>)
+ *      - retainAll(<collection>)
+ *      - clear()
+ * - You can copy a MutableSet
+ *      - toSet()
+ *      - toList()
  */
 
 fun printSet(set: Collection<String>) {
@@ -63,4 +74,14 @@ fun main() {
      *
      * Option #1 is easiest.
      */
+
+    val mFriendSet = mutableSetOf("Jim", "Sue")
+    println("Created a MutableSet: ")
+    printSet(mFriendSet)
+    println("added \"Nick\" to  MutableSet: ")
+    mFriendSet.add("Nick")
+    printSet(mFriendSet)
+    mFriendSet.remove("Nick")
+    println("removed \"Nick\" from  MutableSet: ")
+    printSet(mFriendSet)
 }
