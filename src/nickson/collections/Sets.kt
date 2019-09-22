@@ -28,7 +28,7 @@ package nickson.collections
  * But
  *
  * a.hashCode() == b.hashCode() does not have to mean that a.equals(b)
- * 
+ *
  */
 
 fun printSet(set: Collection<String>) {
