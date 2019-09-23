@@ -10,6 +10,10 @@ import nickson.Recipe
  * - is a subtype of 'Map'
  * - you can call the same functions on a MutableMap that you can on a 'Map'
  * - has add, remove and update key/value pairs
+ * - has:
+ *      - putAll(Map)
+ *      - remove(key)
+ *      - clear()
  */
 
 fun printRecipeMap(recipe: Map<String, Recipe>){
