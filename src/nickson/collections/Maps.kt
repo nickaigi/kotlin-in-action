@@ -52,4 +52,10 @@ fun main() {
     printRecipeMap(mRecipeMap)
 
     /* if MutableMap already contains the specified key, the value for that key is replaced */
+
+    // You can copy Maps and MutableMaps
+    val recipeMapCopy = mRecipeMap.toMap()
+    val recipeList = mRecipeMap.toList()
+    // you can also get direct access to the key/value pairs using Map's 'entries' property
+    val recipeEntries = mRecipeMap.entries
 }
