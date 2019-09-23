@@ -7,7 +7,18 @@ import nickson.Recipe
  * - A map is immutable, you can't add/remove key/value pairs or update the value against a specific key
  *
  * MutableMap:
+ * - is a subtype of 'Map'
+ * - you can call the same functions on a MutableMap that you can on a 'Map'
+ * - has add, remove and update key/value pairs
  */
+
+fun printRecipeMap(recipe: Map<String, Recipe>){
+    println("\n---------------------------------------------------")
+    for ((key, value) in recipe) {
+        println("Key: $key, value: $value")
+    }
+    println("\n---------------------------------------------------")
+}
 
 fun main() {
     val r1 = Recipe("Chicken Soup")
@@ -15,12 +26,8 @@ fun main() {
     val r3 = Recipe("Thai Curry")
 
     val recipeMap = mapOf("r1" to r1, "r2" to r2, "r3" to r3)
+    printRecipeMap(recipeMap)
 
-    println("\n---------------------------------------------------")
-    for ((key, value) in recipeMap) {
-        println("Key is $key, value is $value")
-    }
-    println("\n---------------------------------------------------")
     println("recipeMap.containsKey(\"r1\") ${recipeMap.containsKey("r1")}")
 
     println("\n---------------------------------------------------")
@@ -33,5 +40,12 @@ fun main() {
     }
     println("\n---------------------------------------------------")
 
-    val mRecipeMap = mutableMapOf("one" to r1, "two" to r2, "three" to r3)
+    val mRecipeMap = mutableMapOf("one" to r1, "two" to r2)
+    printRecipeMap(mRecipeMap)
+
+    println("mRecipeMap[\"three\"] = $r3")
+    mRecipeMap["three"] = r3
+    printRecipeMap(mRecipeMap)
+
+    /* if MutableMap already contains the specified key, the value for that key is replaced */
 }
