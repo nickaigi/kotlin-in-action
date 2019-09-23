@@ -30,7 +30,7 @@ package nickson
 
 class RecipeClass(val title: String, val isVegetarian: Boolean)
 
-data class Recipe(val title: String, val isVegetarian: Boolean)
+data class Recipe(val title: String, val isVegetarian: Boolean = false)
 
 /* Properties declared in the class body:
  * - Note that the compiler only uses the properties defined inside the primary constructor for the automatically
