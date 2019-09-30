@@ -24,6 +24,12 @@ fun printRecipeMap(recipe: Map<String, Recipe>){
     println("\n---------------------------------------------------")
 }
 
+/* list.map Vs list.flatMap
+ * - we demonstrate using a data class
+ */
+
+data class Data(val items: List<String>)
+
 fun main() {
     val r1 = Recipe("Chicken Soup")
     val r2 = Recipe("Quinoa Salad")
@@ -58,4 +64,14 @@ fun main() {
     val recipeList = mRecipeMap.toList()
     // you can also get direct access to the key/value pairs using Map's 'entries' property
     val recipeEntries = mRecipeMap.entries
+
+    /* demo of map vs flatMap */
+
+    val data = listOf(Data(listOf("a", "b", "c")), Data(listOf("1", "2", "3")))
+
+    val combined = data.flatMap { it.items }
+    println(combined) // [a, b, c, 1, 2, 3]
+
+    val combinedMap = data.map { it.items }
+    println(combinedMap) // [[a, b, c], [1, 2, 3]]
 }
