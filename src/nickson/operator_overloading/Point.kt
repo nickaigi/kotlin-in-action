@@ -1,7 +1,13 @@
 package nickson.operator_overloading
 
+import java.math.BigInteger
+
 /* Demo of what I have learned
  */
+
+operator fun BigInteger.plus(other: BigInteger) =
+    this.add(other)
+
 
 data class Point(var x: Int, var y: Int) {
     override fun toString(): String {
@@ -36,4 +42,6 @@ fun main() {
     println("Before increment: $pb")
     ++pb
     println("After increment: $pb")
+
+    println(BigInteger.ONE + BigInteger.TEN)
 }
