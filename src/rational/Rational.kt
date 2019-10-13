@@ -44,18 +44,21 @@ private constructor(val numer: BigInteger, val denom: BigInteger): Comparable<Ra
 }
 
 fun String.toRational(): Rational {
-    val message = "Expecting rational in the form of 'n/d' or 'n' was: $this"
+    /* alternatively:
+     * use:
+     * fun String.toBigIntegerOrFail() =
+     *      toBigIntegerOrNull() ?: throw IllegalArgumentException(message)
+     */
+    fun fail(): Nothing = throw IllegalArgumentException(
+        "Expecting rational in the form of 'n/d' or 'n' was: $this"
+    )
     if (!contains("/")) {
-        val number = toBigIntegerOrNull()
-            ?: throw IllegalArgumentException(message)
+        val number = toBigIntegerOrNull() ?: fail()
         return Rational.create(number, BigInteger.ONE)
     }
 
     val (numerText, denomText) = split("/")
-    val numer = numerText.toBigIntegerOrNull()
-        ?: throw IllegalArgumentException(message)
-
-    val denom = denomText.toBigIntegerOrNull()
-        ?: throw IllegalArgumentException(message)
+    val numer = numerText.toBigIntegerOrNull() ?: fail()
+    val denom = denomText.toBigIntegerOrNull() ?: fail()
     return Rational.create(numer, denom)
 }
