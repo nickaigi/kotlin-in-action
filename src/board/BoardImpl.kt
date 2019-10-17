@@ -1,10 +1,17 @@
 package board
-
 import board.Direction.*
 
 open class SquareBoardImpl(override val width: Int) : SquareBoard {
+    val cells = mutableListOf<Cell>()
+    init {
+        for (row in 1..width) {
+            for (column in 1..width)
+                cells.add(Cell(row, column))
+        }
+    }
+
     override fun getCellOrNull(i: Int, j: Int): Cell? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun getCell(i: Int, j: Int): Cell {
@@ -56,6 +63,6 @@ class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBo
 
 }
 
-fun createSquareBoard(width: Int): SquareBoard = TODO()
-fun <T> createGameBoard(width: Int): GameBoard<T> = TODO()
+fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(2)
+fun <T> createGameBoard(width: Int): GameBoard<T> =  GameBoardImpl(2)
 
