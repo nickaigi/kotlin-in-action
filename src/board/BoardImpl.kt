@@ -1,23 +1,28 @@
 package board
 import board.Direction.*
-import java.lang.IllegalArgumentException
 
 open class SquareBoardImpl(override val width: Int) : SquareBoard {
     private val cells = mutableMapOf<Int, List<Cell>>()
 
     init {
-        val rowCells = mutableListOf<Cell>()
+
         for (row in 1..width) {
-            for (column in 1..width)
+            val rowCells = mutableListOf<Cell>()
+            for (column in 1..width) {
                 rowCells.add(Cell(row, column))
+            }
             cells[row] = rowCells
         }
     }
 
-    override fun getCellOrNull(i: Int, j: Int): Cell? = getCell(i, j)
+    override fun getCellOrNull(i: Int, j: Int): Cell? {
+        if (i > width)
+            return null
+        val rowCells = cells[i]
+        return rowCells!![j-1]
+    }
 
     override fun getCell(i: Int, j: Int): Cell {
-        require(i <= width)
 
         val rowCells = cells[i]
 
@@ -26,10 +31,11 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
 
     override fun getAllCells(): Collection<Cell> {
         val allCells = mutableListOf<Cell>()
+
         for ( (_, rowCells) in cells){
-            for (cell in rowCells)
-                allCells.add(cell)
+            rowCells.forEach { allCells.add(it) }
         }
+        println(allCells)
         return allCells
     }
 
@@ -37,7 +43,7 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
         val rowCells = cells[i]
         val result = mutableListOf<Cell>()
         for (j in jRange) {
-            if (j < width)
+            if (j <= width)
                 result.add(rowCells!![j - 1])
         }
         return result
@@ -63,16 +69,17 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
 }
 
 class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBoard<T> {
+    private val pieces = mutableMapOf<Cell, T>()
     override fun get(cell: Cell): T? {
-        TODO("not implemented")
+        return pieces[cell]
     }
 
     override fun set(cell: Cell, value: T?) {
-        TODO("not implemented")
+        pieces[cell] = value!!
     }
 
     override fun filter(predicate: (T?) -> Boolean): Collection<Cell> {
-        TODO("not implemented")
+        TODO()
     }
 
     override fun find(predicate: (T?) -> Boolean): Cell? {
@@ -80,15 +87,14 @@ class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBo
     }
 
     override fun any(predicate: (T?) -> Boolean): Boolean {
-        TODO("not implemented")
+        TODO()
     }
 
     override fun all(predicate: (T?) -> Boolean): Boolean {
-        TODO("not implemented")
+        TODO()
     }
 
 }
-
 fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(2)
 fun <T> createGameBoard(width: Int): GameBoard<T> =  GameBoardImpl(2)
 
