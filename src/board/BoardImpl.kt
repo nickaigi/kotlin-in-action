@@ -3,7 +3,6 @@ import board.Direction.*
 
 open class SquareBoardImpl(override val width: Int) : SquareBoard {
     private val cells = mutableMapOf<Int, List<Cell>>()
-
     init {
 
         for (row in 1..width) {
@@ -16,9 +15,10 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
     }
 
     override fun getCellOrNull(i: Int, j: Int): Cell? {
-        if (i > width)
+        if ((i == 0) || (j == 0) || (i > width) || (j > width))
             return null
         val rowCells = cells[i]
+        println("rowCells: $rowCells")
         return rowCells!![j-1]
     }
 
@@ -51,13 +51,13 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
 
     override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
         val columnCells = mutableListOf<Cell>()
-        val result = mutableListOf<Cell>()
         for (i in iRange) {
-            val rowCells = cells[i]
-            columnCells.add(rowCells!![j -1])
+            if (i <= width) {
+                val cell = cells[i]!![j - 1]
+                columnCells.add(cell)
+            }
         }
-
-        return result
+        return columnCells
     }
 
     override fun Cell.getNeighbour(direction: Direction): Cell? = when (direction){
@@ -95,6 +95,6 @@ class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBo
     }
 
 }
-fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(2)
-fun <T> createGameBoard(width: Int): GameBoard<T> =  GameBoardImpl(2)
+fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(width)
+fun <T> createGameBoard(width: Int): GameBoard<T> =  GameBoardImpl(width)
 
