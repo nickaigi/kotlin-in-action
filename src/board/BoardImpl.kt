@@ -1,4 +1,5 @@
 package board
+
 import board.Direction.*
 
 open class SquareBoardImpl(override val width: Int) : SquareBoard {
@@ -68,14 +69,40 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
     }
 }
 
-class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBoard<T> {
-    private val pieces = mutableMapOf<Cell, T>()
+class GameBoardImpl<T>(override val width: Int) : GameBoard<T> {
+    var board = SquareBoardImpl(width)
+
+    override fun getCellOrNull(i: Int, j: Int): Cell? {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getCell(i: Int, j: Int): Cell {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getAllCells(): Collection<Cell> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getRow(i: Int, jRange: IntProgression): List<Cell> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun Cell.getNeighbour(direction: Direction): Cell? {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun get(cell: Cell): T? {
-        return pieces[cell]
+        this.getAllCells()
+        TODO()
     }
 
     override fun set(cell: Cell, value: T?) {
-        pieces[cell] = value!!
+        TODO()
     }
 
     override fun filter(predicate: (T?) -> Boolean): Collection<Cell> {
@@ -95,6 +122,7 @@ class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBo
     }
 
 }
+
 fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(width)
-fun <T> createGameBoard(width: Int): GameBoard<T> =  GameBoardImpl(width)
+fun <T> createGameBoard(width: Int): GameBoard<T> = GameBoardImpl(width)
 
