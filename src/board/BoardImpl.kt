@@ -69,40 +69,22 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
     }
 }
 
-class GameBoardImpl<T>(override val width: Int) : GameBoard<T> {
-    var board = SquareBoardImpl(width)
+class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBoard<T> {
 
-    override fun getCellOrNull(i: Int, j: Int): Cell? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    private val data = mutableMapOf<Cell, T?>()
 
-    override fun getCell(i: Int, j: Int): Cell {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getAllCells(): Collection<Cell> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getRow(i: Int, jRange: IntProgression): List<Cell> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun Cell.getNeighbour(direction: Direction): Cell? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    init {
+        super.getAllCells().forEach {
+            data[it] = null
+        }
     }
 
     override fun get(cell: Cell): T? {
-        this.getAllCells()
-        TODO()
+        return data[cell]
     }
 
     override fun set(cell: Cell, value: T?) {
-        TODO()
+        data[cell] = value
     }
 
     override fun filter(predicate: (T?) -> Boolean): Collection<Cell> {
