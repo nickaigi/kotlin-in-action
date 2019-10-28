@@ -3,7 +3,7 @@ package board
 import board.Direction.*
 
 open class SquareBoardImpl(override val width: Int) : SquareBoard {
-    private val cells = mutableMapOf<Int, List<Cell>>()
+    var cells = mutableMapOf<Int, List<Cell>>()
     init {
 
         for (row in 1..width) {
@@ -71,40 +71,43 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
 
 class GameBoardImpl<T>(override val width: Int) : SquareBoardImpl(width), GameBoard<T> {
 
-    private val data = mutableMapOf<Cell, T?>()
+    val data = mutableMapOf<Cell, T?>()
 
-    init {
-        super.getAllCells().forEach {
-            data[it] = null
-        }
-    }
-
-    override fun get(cell: Cell): T? {
-        return data[cell]
-    }
+    override fun get(cell: Cell): T? = data[cell]
 
     override fun set(cell: Cell, value: T?) {
         data[cell] = value
     }
 
-    override fun filter(predicate: (T?) -> Boolean): Collection<Cell> {
-        TODO()
-    }
+    override fun filter(predicate: (T?) -> Boolean): Collection<Cell> = data.filterValues { predicate.invoke(it) }.keys
 
-    override fun find(predicate: (T?) -> Boolean): Cell? {
-        TODO("not implemented")
-    }
+    override fun find(predicate: (T?) -> Boolean): Cell? = data.filter { predicate.invoke(it.value) }.keys.first()
 
-    override fun any(predicate: (T?) -> Boolean): Boolean {
-        TODO()
-    }
+    override fun any(predicate: (T?) -> Boolean): Boolean = data.values.any(predicate)
 
-    override fun all(predicate: (T?) -> Boolean): Boolean {
-        TODO()
-    }
+    override fun all(predicate: (T?) -> Boolean): Boolean = data.values.all(predicate)
 
 }
 
-fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(width)
-fun <T> createGameBoard(width: Int): GameBoard<T> = GameBoardImpl(width)
+fun createEmptyBoard(width: Int): MutableMap<Int, List<Cell>> {
+    var result = mutableMapOf<Int, List<Cell>>()
 
+
+    for (row in 1..width) {
+        val rowCells = mutableListOf<Cell>()
+        for (column in 1..width) {
+            rowCells.add(Cell(row, column))
+        }
+        result[row] = rowCells
+    }
+    return result
+}
+
+fun createSquareBoard(width: Int): SquareBoard = SquareBoardImpl(width)
+
+fun <T> createGameBoard(width: Int): GameBoard<T> {
+    val myBoard = GameBoardImpl<T>(width)
+    myBoard.cells = createEmptyBoard(width)
+    myBoard.getAllCells().forEach { myBoard.data[it] = null }
+    return myBoard
+}
