@@ -86,4 +86,7 @@ fun main() {
     employee = developer
     employee.printDetails()
     println(employee.name)
+
+    println("----------------------------------")
+    val androidDeveloper = AndroidDeveloper("Anne", 100_000)
 }
