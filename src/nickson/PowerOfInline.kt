@@ -5,6 +5,8 @@ fun myRun(f:()-> Unit) = f()
 /* if we inline the run function */
 inline fun <R> run2(block:() -> R): R = block()
 
+/* inline-ing of takeUnless */
+inline fun <T> T.takeUnless2(predicate: (T) -> Boolean): T? = if (!predicate(this)) this else null
 
 fun main() {
     val name = "Kotlin"
@@ -16,4 +18,5 @@ fun main() {
 
     //using inline, no overhead
     run2 { println("Hi, $name!") }
+
 }
