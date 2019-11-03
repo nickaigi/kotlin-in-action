@@ -45,8 +45,11 @@ fun main() {
     list4.map(::m).filter(::f) // m1 m2 m3 m4 f1 f2 f3 f4
 
     println("\nUsing asSequence()")
-    list4.asSequence().map(::m).filter(::f).toList()
+    list4.asSequence().map(::m).filter(::f).toList() // m1 f1 m2 f2 m3 f3 m4 f4
 
-    println("\nUsing asSequence(): nothing is printed if we don't invoke a result call")
+    println("\nUsing asSequence(): nothing is printed if we don't invoke a result call, or a terminal operation")
     list4.asSequence().map(::m).filter(::f)
+
+    // with sequences, order of operations is important
+    list4.asSequence().filter(::f).map(::m).toList() // f1 f2 m2 f3 f4 m4
 }
