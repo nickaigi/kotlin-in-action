@@ -1,5 +1,4 @@
-package nickson
-
+package nickson.sequences
 import kotlin.random.Random
 
 /**
