@@ -1,5 +1,7 @@
 package nickson
 
+import kotlin.random.Random
+
 /**
  * Remember: extensions on collections in most cases return new collections
  * i.e.
@@ -16,6 +18,15 @@ fun m(i: Int): Int {
 fun f(i: Int): Boolean {
     print("f$i ")
     return i.rem(2) == 0
+}
+
+// generating a sequence
+fun example4() {
+    print("\n\nExample4:")
+    val seq = generateSequence {
+        Random.nextInt(5).takeIf { it > 0 }
+    }
+    println(seq.toList())
 }
 
 fun main() {
@@ -52,4 +63,6 @@ fun main() {
 
     // with sequences, order of operations is important
     list4.asSequence().filter(::f).map(::m).toList() // f1 f2 m2 f3 f4 m4
+
+    example4()
 }
