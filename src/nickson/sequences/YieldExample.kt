@@ -17,10 +17,11 @@ fun main() {
             yield(x++)
         }
     }
-    println(numbers.take(5).toList())
+    //println(numbers.take(5).toList())
 
     println(mySequence()
         .map { it * it }
         .filter { it > 10 }
-        .take(1)) // take is not a terminal operation! Therefore, "yield ..." will not be printed at all
+        //.take(1)) // take is not a terminal operation! Therefore, "yield ..." will not be printed at all
+        .first())
 }
