@@ -48,4 +48,22 @@ fun main() {
         val group = map.getOrPut(person.age) { mutableListOf() }
         group += person
     }
+    /*
+     * inline fun <K, V> MutableMap<K,V>.getOrPut(
+     *      key:K,
+     *      defaultValue: ()-> V
+     * ): V
+     *
+     * - returns the value for the given key. If the key is not found in the map, calls the 'defaultValue'
+     *   function, puts its result in the map under the given key and returns it  */
+
+    // Problem 5, simplify the entire code in problem 4 into a one liner
+    // Soln 5:
+    val mapSimple = people.groupBy { it.age }
+
+    /* Problem 6: function that performs "groupBy" for sequences in a lazy way*/
+    people
+        .asSequence()
+        .groupBy { it.age }
+        .mapValues { (_, group) -> group.size }
 }
