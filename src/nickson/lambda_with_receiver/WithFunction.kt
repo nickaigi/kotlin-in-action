@@ -15,10 +15,17 @@ fun main() {
      * - recall: if a lambda is the second arg of a function, we can move it out of the parenthesis in the function
      *   call */
     with(sb2) {
-        appendln("Alphabet2: ")
+        appendln("Alphabet2: ") // also 'this.appendln()'
         for (c in 'a'..'z') {
-            append(c)
+            append(c)  // also 'this.append()'
         }
-        println(this.toString()) // 'this' implicit receiver to the lambda
+        println(toString()) // 'this.toString()' uses implicit receiver to the lambda, it can be omitted.
     }
+
+    /* recall: we can store a lambda in a variable
+     * isEven is a regular lambda
+     * isOdd is a lambda with receiver. note how we define its type
+     * */
+    val isEven: (Int)->Boolean = { it.rem(2) == 0 }
+    val isOdd: Int.()->Boolean = {this.rem(2) ==1 }
 }
