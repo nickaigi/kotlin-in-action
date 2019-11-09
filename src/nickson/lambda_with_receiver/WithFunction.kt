@@ -9,6 +9,13 @@ inline fun buildString2(
     return stringBuilder.toString()
 }
 
+/* how is 'with' implemented */
+inline fun <T, R> with2(
+    receiver: T,
+    block: T.() -> R
+): R = receiver.block()
+
+
 fun main() {
     // an ordinary programmer would write
     val sb = StringBuilder()
