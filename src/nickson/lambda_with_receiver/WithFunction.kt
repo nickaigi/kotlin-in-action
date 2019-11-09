@@ -1,5 +1,14 @@
 package nickson.lambda_with_receiver
 
+/* how the buildString function is implemented */
+inline fun buildString2(
+    builderAction: StringBuilder.() -> Unit
+): String {
+    val stringBuilder = StringBuilder()
+    stringBuilder.builderAction() // you call the lambda as an extension function
+    return stringBuilder.toString()
+}
+
 fun main() {
     // an ordinary programmer would write
     val sb = StringBuilder()
