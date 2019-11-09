@@ -25,7 +25,22 @@ fun main() {
     /* recall: we can store a lambda in a variable
      * isEven is a regular lambda
      * isOdd is a lambda with receiver. note how we define its type
+     *      - you put the receiver type before the parameter list, then the '.' then the parameters as usual in the
+     *        parenthesis.
      * */
-    val isEven: (Int)->Boolean = { it.rem(2) == 0 }
-    val isOdd: Int.()->Boolean = {this.rem(2) ==1 }
+    val isEven: (Int) -> Boolean = { it.rem(2) == 0 }
+    val isOdd: Int.() -> Boolean = {this.rem(2) ==1 }
+
+    isEven(2) // call to a regular lambda is a like a regular function call
+    /* lambda with receiver call is like calling an extension function */
+    1.isOdd()
+
+    /* another example: buildString, using a lambda with receiver */
+    val s: String = buildString {
+        appendln("Alphabet3: ")
+        for (c in 'a'..'z') {
+            append(c)
+        }
+    }
+    println(s)
 }
