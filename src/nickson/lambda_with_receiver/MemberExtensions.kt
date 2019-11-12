@@ -15,7 +15,6 @@ class Words {
     operator fun String.unaryPlus(){
         record()
     }
-    
     override fun toString() = list.toString()
 }
 
